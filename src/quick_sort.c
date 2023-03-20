@@ -6,7 +6,7 @@
 /*   By: mvillarr <mvillarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:58:47 by mvillarr          #+#    #+#             */
-/*   Updated: 2023/03/18 17:58:09 by mvillarr         ###   ########.fr       */
+/*   Updated: 2023/03/20 20:46:03 by mvillarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,26 +70,75 @@ void	print_str(int str[], int size)
 	write(1, "\n", 1);
 }
 
-int	main(void)
+t_list	*init_stack()
+{
+	t_list	*ret;
+
+	ret = (t_list *)malloc(sizeof(t_list));
+	if (ret == NULL)
+		return NULL;
+	ret->number = 0;
+	ret->next = NULL;
+	ret->previous = NULL;
+	return (ret);
+}
+
+int	set_node(char *arg)
+{
+	int i = 0;
+	while (arg[i])
+	{
+		// atoi, ouis je mets dans ma liste, je cree un node
+		
+		printf("%c\n", arg[i]);
+		i++;
+	}
+
+	return 0;
+}
+
+int	fill_stack(char **argv)
+{
+	int i = 1;
+	while (argv[i])
+	{
+		/* code */
+		set_node(argv[i]);
+		i++;
+	}
+	
+
+	return 0;
+}
+
+int	main(int argc, char **argv)
 {
 	// int	array_of_number[] = {-846, 85, 8786};
-	int	array_of_number[] = {672, -94, 45, 142, 3};
+	// int	array_of_number[] = {672, -94, 45, 142, 3};
 	// int	array_of_number[] = {10, 1000, -2, 807416, 898, 3, 5, 1, -345, 89, 56, -3, -3};
-	t_data *a;
-	t_data *b;
-	if (sizeof(array_of_number) == 5)
-		arrange_5_arg(&a, &b);
-	if (sizeof(array_of_number) == 2)
-		arrange_2_arg(&a);
-	if (sizeof(array_of_number) == 3)
-		arrange_3_arg(&a);
-	int	n = sizeof(array_of_number) / sizeof(array_of_number[0]);
-	//t_data *a;
-	//t_data *b;
-
+	if (argc < 2)
+	{
+		printf("usage: ./push_swap <int arguments>\n");
+		return (EXIT_FAILURE);
+	}	
+	t_list *a;
 	
-	qs_algo(array_of_number, 0, n -1);
-	printf("el string ordenado es: \n");
-	print_str(array_of_number, n);
+	a = init_stack();
+	if (a == NULL)
+		return (EXIT_FAILURE);
+	fill_stack(argv);
+	// if (sizeof(array_of_number) == 5)
+		// arrange_5_arg(&a, &b);
+	// if (sizeof(array_of_number) == 2)
+		// arrange_2_arg(&a);
+	// if (sizeof(array_of_number) == 3)
+		// arrange_3_arg(&a);
+	// int	n = sizeof(array_of_number) / sizeof(array_of_number[0]);
+	// t_data *a;
+	// t_data *b;
+// 
+	// qs_algo(array_of_number, 0, n -1);
+	// printf("el string ordenado es: \n");
+	// print_str(array_of_number, n);
 	return (0);
 }
