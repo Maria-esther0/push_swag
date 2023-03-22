@@ -6,7 +6,7 @@
 /*   By: mvillarr <mvillarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:58:47 by mvillarr          #+#    #+#             */
-/*   Updated: 2023/03/22 10:36:56 by mvillarr         ###   ########.fr       */
+/*   Updated: 2023/03/22 14:57:34 by mvillarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,12 @@ void	print_str(int str[], int size)
 int	insert(t_list **a, int number)
 {
 	t_list	*new_node;
-	t_list	*last;
+	t_list	*tmp;
 
 	new_node = (t_list *)malloc(sizeof(t_list));
 	if (new_node == NULL)
 		return -1;
-	last = *a;	
+	tmp = *a;	
 	new_node->data = number;
 	new_node->next = NULL;
 	if (*a == NULL)
@@ -89,10 +89,10 @@ int	insert(t_list **a, int number)
 		*a = new_node;
 		return (0);
 	}
-	while (last->next != NULL)
-		last = last->next;
-	last->next = new_node;
-	new_node->previous = last;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	tmp->next = new_node;
+	new_node->previous = tmp;
 
 	return (0);
 }
@@ -113,21 +113,26 @@ void	print_list(t_list **head)
 
 int	set_node(t_list **a, char *arg)
 {
-	int 	i = -1;
+	int 	i;
 	char	**args;
+	int		num;
+	int		res;
 
+	i = -1;
 	args = ft_split(arg, ' ');
-	if (!*args)
+	if (args)
 		return (-1);
+	res = 0;
 	while (args[++i])
 	{
 		// atoi bc we need numbers not a string, puis je mets dans ma liste, je cree un node
-		int res = ft_atoi(arg);
-		if (insert(a, res) != 0)
-			return (-1);
-		// i++;
+		num = ft_atoi(args[i]);
+		res = insert(a, num);
+		if (res != 0)
+			break ;
 	}
-	return 0;
+	free_strs(args);
+	return (res);
 }
 
 int	fill_stack(t_list **a, char **argv)
@@ -154,8 +159,11 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}	
 	t_list *a = NULL;
+	t_list *b = NULL;
 
 	fill_stack(&a, argv);
+	(void)b;
+	/* sorting here */
 
 	free_list_a(a);
 	// if (sizeof(array_of_number) == 5)

@@ -6,7 +6,7 @@
 /*   By: mvillarr <mvillarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 15:23:29 by mvillarr          #+#    #+#             */
-/*   Updated: 2023/03/22 10:36:38 by mvillarr         ###   ########.fr       */
+/*   Updated: 2023/03/22 14:57:22 by mvillarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void    QS_algo(int str[], int low, int high);
 void    print_str(int str[], int size);
 void    ft_swap(int *a, int *b);
 int     pivot_index(int str[], int low, int high);
-void    arrange_2_arg(t_list **stack_a);
-void    arrange_3_arg(t_list **stack_a);
+void    arrange_2_arg(t_list    **stack_a);
+void    arrange_3_arg(t_list    **stack_a);
 void    arrange_5_arg(t_list    **stack_a, t_list   **stack_b);
 void    fisrt_pa_5arg(t_list    **stack_a);
 void    second_pa_5arg(t_list   **stack_a);
@@ -77,6 +77,7 @@ void    rrr(t_list **stack_a, t_list **stack_b);
 t_list  *ft_lstlast(t_list *list);
 t_list  *last_nbr(t_list *list);
 void	free_list_a(t_list *head);
+void	free_strs(char **strs);
 int	set_node(t_list **a, char *arg);
 int	fill_stack(t_list **a, char **argv);
 
