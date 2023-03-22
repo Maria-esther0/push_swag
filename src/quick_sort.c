@@ -6,7 +6,7 @@
 /*   By: mvillarr <mvillarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:58:47 by mvillarr          #+#    #+#             */
-/*   Updated: 2023/03/22 14:57:34 by mvillarr         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:36:05 by mvillarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int	set_node(t_list **a, char *arg)
 
 	i = -1;
 	args = ft_split(arg, ' ');
-	if (args)
+	if (!args)
 		return (-1);
 	res = 0;
 	while (args[++i])
