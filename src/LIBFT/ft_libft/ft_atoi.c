@@ -6,7 +6,7 @@
 /*   By: mvillarr <mvillarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 15:48:54 by mvillarr          #+#    #+#             */
-/*   Updated: 2022/11/20 14:54:26 by mvillarr         ###   ########.fr       */
+/*   Updated: 2023/03/21 10:10:44 by mvillarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 static int	number(char c)
 {
 	if (c >= '0' && c <= '9')
-	{
 		return (1);
-	}
 	return (0);
 }
 
@@ -56,12 +54,10 @@ int	ft_atoi(const char *str)
 	}
 	return (res_sign * res);
 }
-
 /*
 int main()
 {
-	char str[] = "\t \n 6514";
-	printf("%i\n", ft_atoi(str));
-	printf("%i", ft_atoi(str)):
-}
-*/
+	char str[] = "54";
+	//printf("%i\n", ft_atoi(str));
+	printf("%i", ft_atoi(str));
+}*/

@@ -6,7 +6,7 @@
 /*   By: mvillarr <mvillarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:58:47 by mvillarr          #+#    #+#             */
-/*   Updated: 2023/03/20 20:46:03 by mvillarr         ###   ########.fr       */
+/*   Updated: 2023/03/22 10:36:56 by mvillarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,45 +69,77 @@ void	print_str(int str[], int size)
 	}
 	write(1, "\n", 1);
 }
-
-t_list	*init_stack()
+// ---------------------------------------------------------- 
+// *[10][NULL]
+// a*[NULL]
+int	insert(t_list **a, int number)
 {
-	t_list	*ret;
+	t_list	*new_node;
+	t_list	*last;
 
-	ret = (t_list *)malloc(sizeof(t_list));
-	if (ret == NULL)
-		return NULL;
-	ret->number = 0;
-	ret->next = NULL;
-	ret->previous = NULL;
-	return (ret);
+	new_node = (t_list *)malloc(sizeof(t_list));
+	if (new_node == NULL)
+		return -1;
+	last = *a;	
+	new_node->data = number;
+	new_node->next = NULL;
+	if (*a == NULL)
+	{
+		new_node->previous = NULL;
+		*a = new_node;
+		return (0);
+	}
+	while (last->next != NULL)
+		last = last->next;
+	last->next = new_node;
+	new_node->previous = last;
+
+	return (0);
 }
 
-int	set_node(char *arg)
+void	print_list(t_list **head)
 {
-	int i = 0;
-	while (arg[i])
-	{
-		// atoi, ouis je mets dans ma liste, je cree un node
-		
-		printf("%c\n", arg[i]);
-		i++;
-	}
+	t_list *tmp;
 
+	tmp = *head;
+	printf("-------------------------------------\n");
+	while (tmp)
+	{
+		printf("%d\n", tmp->data);
+		tmp = tmp->next;
+	}
+	printf("-------------------------------------\n");
+}
+
+int	set_node(t_list **a, char *arg)
+{
+	int 	i = -1;
+	char	**args;
+
+	args = ft_split(arg, ' ');
+	if (!*args)
+		return (-1);
+	while (args[++i])
+	{
+		// atoi bc we need numbers not a string, puis je mets dans ma liste, je cree un node
+		int res = ft_atoi(arg);
+		if (insert(a, res) != 0)
+			return (-1);
+		// i++;
+	}
 	return 0;
 }
 
-int	fill_stack(char **argv)
+int	fill_stack(t_list **a, char **argv)
 {
 	int i = 1;
 	while (argv[i])
 	{
-		/* code */
-		set_node(argv[i]);
+		if (set_node(a, argv[i]))
+			return (-1);
 		i++;
 	}
-	
-
+	print_list(a);
 	return 0;
 }
 
@@ -121,12 +153,11 @@ int	main(int argc, char **argv)
 		printf("usage: ./push_swap <int arguments>\n");
 		return (EXIT_FAILURE);
 	}	
-	t_list *a;
-	
-	a = init_stack();
-	if (a == NULL)
-		return (EXIT_FAILURE);
-	fill_stack(argv);
+	t_list *a = NULL;
+
+	fill_stack(&a, argv);
+
+	free_list_a(a);
 	// if (sizeof(array_of_number) == 5)
 		// arrange_5_arg(&a, &b);
 	// if (sizeof(array_of_number) == 2)

@@ -6,7 +6,7 @@
 /*   By: mvillarr <mvillarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 15:23:29 by mvillarr          #+#    #+#             */
-/*   Updated: 2023/03/18 15:50:49 by mvillarr         ###   ########.fr       */
+/*   Updated: 2023/03/22 10:36:38 by mvillarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_data
 
 typedef struct s_list
 {
-    int number;
+    int data;
     struct s_list *next;
     struct s_list *previous;
 }       t_list;
@@ -53,30 +53,31 @@ void    QS_algo(int str[], int low, int high);
 void    print_str(int str[], int size);
 void    ft_swap(int *a, int *b);
 int     pivot_index(int str[], int low, int high);
-void    arrange_2_arg(t_data **stack_a);
-void    arrange_3_arg(t_data **stack_a);
-void    arrange_5_arg(t_data    **stack_a, t_data   **stack_b);
-void    fisrt_pa_5arg(t_data    **stack_a);
-void    second_pa_5arg(t_data   **stack_a);
-void    global_move(t_data  **stack_a);
+void    arrange_2_arg(t_list **stack_a);
+void    arrange_3_arg(t_list **stack_a);
+void    arrange_5_arg(t_list    **stack_a, t_list   **stack_b);
+void    fisrt_pa_5arg(t_list    **stack_a);
+void    second_pa_5arg(t_list   **stack_a);
+void    global_move(t_list  **stack_a);
 
 //moves 
-void    pa(t_data **stack_a, t_data **stack_b);
-void    pb(t_data **stack_a, t_data **stack_b);
-void    sb(t_data **stack_b);
-void    sa(t_data **stack_a);
-void    ss(t_data **stack_a, t_data **stack_b);
-void    ra(t_data **stack_a);
-void    rb(t_data **stack_b);
-void    rr(t_data **stack_a, t_data **stack_b);
-void    rra(t_data **stack_a);
-void    rrb(t_data **stack_b);
-void    rrr(t_data **stack_a, t_data **stack_b);
+void    pa(t_list **stack_a, t_list **stack_b);
+void    pb(t_list **stack_a, t_list **stack_b);
+void    sb(t_list **stack_b);
+void    sa(t_list **stack_a);
+void    ss(t_list **stack_a, t_list **stack_b);
+void    ra(t_list **stack_a);
+void    rb(t_list **stack_b);
+void    rr(t_list **stack_a, t_list **stack_b);
+void    rra(t_list **stack_a);
+void    rrb(t_list **stack_b);
+void    rrr(t_list **stack_a, t_list **stack_b);
 
-// static void rev_rot(t_data **stack);
-t_data  *ft_lstlast(t_data *list);
 //outils
-t_data  *last_nbr(t_data *list);
-
+t_list  *ft_lstlast(t_list *list);
+t_list  *last_nbr(t_list *list);
+void	free_list_a(t_list *head);
+int	set_node(t_list **a, char *arg);
+int	fill_stack(t_list **a, char **argv);
 
 #endif

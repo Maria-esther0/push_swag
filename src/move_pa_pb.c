@@ -6,7 +6,7 @@
 /*   By: mvillarr <mvillarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:18:16 by mvillarr          #+#    #+#             */
-/*   Updated: 2023/03/16 16:31:54 by mvillarr         ###   ########.fr       */
+/*   Updated: 2023/03/21 16:29:31 by mvillarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 //prend le premier element du sommet d'une stack et le met sur l'autre
 //ne fait rien si l'autre stack est vide
 
-void	pa(t_data	**stack_a, t_data	**stack_b)
+void	pa(t_list	**stack_a, t_list	**stack_b)
 {
-	t_data	*push_b;
+	t_list	*push_b;
 
     if (!stack_b)
         exit(1);
@@ -29,9 +29,9 @@ void	pa(t_data	**stack_a, t_data	**stack_b)
     write(1, "pa\n", 3);
 }
 
-void    pb(t_data **stack_a, t_data **stack_b)
+void    pb(t_list **stack_a, t_list **stack_b)
 {
-    t_data  *push_a;
+    t_list  *push_a;
 
     if (!stack_a)
         exit(1);

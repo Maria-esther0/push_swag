@@ -6,7 +6,7 @@
 /*   By: mvillarr <mvillarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 15:46:21 by mvillarr          #+#    #+#             */
-/*   Updated: 2022/11/22 15:43:13 by mvillarr         ###   ########.fr       */
+/*   Updated: 2023/03/21 10:06:34 by mvillarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include <string.h>
+# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stddef.h>
