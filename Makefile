@@ -78,7 +78,8 @@ SRC		= 	src/push_swap.c\
 			src/stack_a_is_sorted.c\
 			src/free.c\
 			src/arrange_small_stack.c\
-			src/arrange_big_stack.c
+			src/arrange_big_stack.c\
+			src/algo.c
 
 OBJ		= $(SRC:.c=.o)
 

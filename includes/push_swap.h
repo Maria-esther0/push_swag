@@ -6,7 +6,7 @@
 /*   By: mvillarr <mvillarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 15:23:29 by mvillarr          #+#    #+#             */
-/*   Updated: 2023/03/22 14:57:22 by mvillarr         ###   ########.fr       */
+/*   Updated: 2023/03/28 16:10:35 by mvillarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@
 #include "../src/LIBFT/ft_libft/libft.h"
 #include "../src/LIBFT/libftprintf/ft_printf.h"
 
-typedef struct s_data
-{
-    int index;
-    int n;
-    int f;
-    int number;
-
-
-    struct s_data *next;
-}   t_data;
+// typedef struct s_data
+// {
+    // int index;
+    // int n;
+    // int f;
+    // int number;
+// 
+// 
+    // struct s_data *next;
+// }   t_data;
 
 typedef struct s_list
 {
@@ -59,6 +59,10 @@ void    arrange_5_arg(t_list    **stack_a, t_list   **stack_b);
 void    fisrt_pa_5arg(t_list    **stack_a);
 void    second_pa_5arg(t_list   **stack_a);
 void    global_move(t_list  **stack_a);
+
+// shamefully radix sort
+void    algo(t_list *stack_a, t_list *stack_b, int num);
+//static int    bit_size(int size);
 
 //moves 
 void    pa(t_list **stack_a, t_list **stack_b);
