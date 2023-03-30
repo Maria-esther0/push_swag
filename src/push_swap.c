@@ -6,7 +6,7 @@
 /*   By: mvillarr <mvillarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 12:28:57 by mvillarr          #+#    #+#             */
-/*   Updated: 2023/03/27 15:11:12 by mvillarr         ###   ########.fr       */
+/*   Updated: 2023/03/30 16:45:46 by mvillarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,11 @@ void	print_list(t_list **head)
 	t_list *tmp;
 
 	tmp = *head;
-	printf("-------------------------------------\n");
 	while (tmp)
 	{
 		printf("%d\n", tmp->data);
 		tmp = tmp->next;
 	}
-	printf("-------------------------------------\n");
 }
 
 int	set_node(t_list **a, char *arg)
@@ -86,40 +84,48 @@ int	fill_stack(t_list **a, char **argv)
 			return (-1);
 		i++;
 	}
-	print_list(a);
+	//print_list(a);
 	return 0;
 }
 
-int	main(int argc, char **argv)
-{
-	// int	array_of_number[] = {-846, 85, 8786};
-	// int	array_of_number[] = {672, -94, 45, 142, 3};
-	// int	array_of_number[] = {10, 1000, -2, 807416, 898, 3, 5, 1, -345, 89, 56, -3, -3};
-	if (argc < 2)
-	{
-		printf("usage: ./push_swap <int arguments>\n");
-		return (EXIT_FAILURE);
-	}	
-	t_list *a = NULL;
-	t_list *b = NULL;
+// int	main(int argc, char **argv)
+// {
+// 	int	array_of_number[] = {-846, 85, 8786};
+// 	int	array_of_number[] = {672, -94, 45, 142, 3};
+// 	int	array_of_number[] = {10, 1000, -2, 807416, 898, 3, 5, 1, -345, 89, 56, -3, -3};
+// 	if (argc <= 2)
+// 	{
+// 		printf("usage: ./push_swap <int arguments>\n");
+// 		return (EXIT_FAILURE);
+// 	}
+// 	t_list *a = NULL;
+// 	t_list *b = NULL;
 
-	fill_stack(&a, argv);
-	(void)b;
-	/* sorting here */
+// 	fill_stack(&a, argv);
+// 	(void)b;
+// 	/* sorting here */
+// 	if (argc >= 3)
+// 	{
+// 		algo(a, b, argc -1);
+// 		if (argc -1 == 2)
+// 			arrange_2_arg(&a);
+// 		else if (argc -1 == 3)
+// 			arrange_3_arg(&a);
+// 		else if (argc -1 == 5)
+// 			arrange_5_arg(&a, &b);
+// 		algo(a, b, argc -1);
+// 	}
+// 	free_list_a(a);
+// 	if (sizeof(array_of_number) == 5)
+// 		arrange_5_arg(&a, &b);
+// 	if (sizeof(array_of_number) == 2)
+// 		arrange_2_arg(&a);
+// 	if (sizeof(array_of_number) == 3)
+// 		arrange_3_arg(&a);
+// 	int	n = sizeof(array_of_number) / sizeof(array_of_number[0]);
 
-	free_list_a(a);
-	// if (sizeof(array_of_number) == 5)
-		// arrange_5_arg(&a, &b);
-	// if (sizeof(array_of_number) == 2)
-		// arrange_2_arg(&a);
-	// if (sizeof(array_of_number) == 3)
-		// arrange_3_arg(&a);
-	//int	n = sizeof(array_of_number) / sizeof(array_of_number[0]);
-	// t_data *a;
-	// t_data *b;
-// 
-//	qs_algo(array_of_number, 0, n -1);
-//	printf("el string ordenado es: \n");
-//	print_str(array_of_number, n);
-	return (0);
-}
+// 	qs_algo(array_of_number, 0, n -1);
+// 	printf("el string ordenado es: \n");
+// 	print_str(array_of_number, n);
+// 	return (0);
+// }

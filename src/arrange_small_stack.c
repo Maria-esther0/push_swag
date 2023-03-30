@@ -6,7 +6,7 @@
 /*   By: mvillarr <mvillarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 17:45:00 by mvillarr          #+#    #+#             */
-/*   Updated: 2023/03/21 18:30:56 by mvillarr         ###   ########.fr       */
+/*   Updated: 2023/03/30 16:44:35 by mvillarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,20 @@ void    third(t_utils *utils, t_list **stack_a)
     rra(stack_a);
 }
 
+void    first_case(t_list **a)
+{
+    rra(a);
+    sa(a);
+}
+
 void     arrange_3_arg(t_list    **stack_a)
 {
-    t_utils utils;
+    int first = (*stack_a)->data;
+    int second = (*stack_a)->next->data;
+    int third = (*stack_a)->next->next->data;
+    if (first < second && second > third)
+        first_case(stack_a);
+    /*t_utils utils;
 
     utils.first = (*stack_a)->data;
     utils.second = (*stack_a)->next->data;
@@ -52,5 +63,5 @@ void     arrange_3_arg(t_list    **stack_a)
     else if (utils.second < (utils.first && utils.third))
         second(&utils, stack_a);
     else if (utils.third < (utils.first && utils.second))
-        third(&utils, stack_a);        
+        third(&utils, stack_a);*/
 }

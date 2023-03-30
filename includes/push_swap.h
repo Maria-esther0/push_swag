@@ -6,7 +6,7 @@
 /*   By: mvillarr <mvillarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 15:23:29 by mvillarr          #+#    #+#             */
-/*   Updated: 2023/03/28 16:10:35 by mvillarr         ###   ########.fr       */
+/*   Updated: 2023/03/30 16:46:03 by mvillarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ void    global_move(t_list  **stack_a);
 
 // shamefully radix sort
 void    algo(t_list *stack_a, t_list *stack_b, int num);
-//static int    bit_size(int size);
+int    is_sorted(t_list *a);
+// static int    bit_size(int size);
 
 //moves 
 void    pa(t_list **stack_a, t_list **stack_b);
@@ -81,8 +82,10 @@ void    rrr(t_list **stack_a, t_list **stack_b);
 t_list  *ft_lstlast(t_list *list);
 t_list  *last_nbr(t_list *list);
 void	free_list_a(t_list *head);
+void	free_list_b(t_list	*head);
 void	free_strs(char **strs);
 int	set_node(t_list **a, char *arg);
 int	fill_stack(t_list **a, char **argv);
+void	print_list(t_list **head);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mvillarr <mvillarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 19:04:29 by mvillarr          #+#    #+#             */
-/*   Updated: 2023/03/22 14:57:10 by mvillarr         ###   ########.fr       */
+/*   Updated: 2023/03/30 14:44:50 by mvillarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,19 @@
 void	free_list_a(t_list *head)
 {
 	t_list *tmp;
+
+	while (head)
+	{
+		tmp = head->next;
+		free(head);
+		head = NULL;
+		head = tmp;
+	}
+}
+
+void	free_list_b(t_list	*head)
+{
+	t_list	*tmp;
 
 	while (head)
 	{
