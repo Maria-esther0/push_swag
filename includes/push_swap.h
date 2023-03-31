@@ -6,7 +6,7 @@
 /*   By: mvillarr <mvillarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 15:23:29 by mvillarr          #+#    #+#             */
-/*   Updated: 2023/03/30 16:46:03 by mvillarr         ###   ########.fr       */
+/*   Updated: 2023/03/31 11:50:43 by mvillarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void    rr(t_list **stack_a, t_list **stack_b);
 void    rra(t_list **stack_a);
 void    rrb(t_list **stack_b);
 void    rrr(t_list **stack_a, t_list **stack_b);
+void    first_case(t_list **a);
+void    second_case(t_list **a);
 
 //outils
 t_list  *ft_lstlast(t_list *list);
