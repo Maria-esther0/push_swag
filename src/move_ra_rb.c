@@ -6,7 +6,7 @@
 /*   By: mvillarr <mvillarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:36:12 by mvillarr          #+#    #+#             */
-/*   Updated: 2023/03/21 16:30:56 by mvillarr         ###   ########.fr       */
+/*   Updated: 2023/04/03 17:38:08 by mvillarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ static void rotate(t_list **stack)
 
     top = *stack;
     if(!(*stack) || !((*stack)->next))
+    {
+        print_list(stack);
         exit(1);
+    }
     *stack = top->next;
     top->next = NULL;
     ft_lstlast(*stack);

@@ -48,6 +48,8 @@ int main(int argc, char *argv[])
 	size = get_stack_size(a);
 	while (size)
     {
+        if (!is_sorted(a))
+            break ;
         if (size == 3)
 		    arrange_3_arg(&a);
         else if (size == 2)
