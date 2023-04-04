@@ -6,7 +6,7 @@
 /*   By: mvillarr <mvillarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 15:23:29 by mvillarr          #+#    #+#             */
-/*   Updated: 2023/03/31 11:50:43 by mvillarr         ###   ########.fr       */
+/*   Updated: 2023/04/04 19:48:58 by mvillarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ typedef struct s_utils
 }   t_utils;
 
 //quick sort functions
-void    QS_algo(int str[], int low, int high);
-void    print_str(int str[], int size);
+//void    QS_algo(int str[], int low, int high);
+// void    print_str(int str[], int size);
 void    ft_swap(int *a, int *b);
-int     pivot_index(int str[], int low, int high);
+// int     pivot_index(int str[], int low, int high);
 void    arrange_2_arg(t_list    **stack_a);
 void    arrange_3_arg(t_list    **stack_a);
 void    arrange_5_arg(t_list    **stack_a, t_list   **stack_b);
@@ -63,7 +63,7 @@ void    global_move(t_list  **stack_a);
 // shamefully radix sort
 void    algo(t_list *stack_a, t_list *stack_b, int num);
 int    is_sorted(t_list *a);
-// static int    bit_size(int size);
+int max(t_list *stack);
 
 //moves 
 void    pa(t_list **stack_a, t_list **stack_b);

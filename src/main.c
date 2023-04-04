@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 
     if (argc <= 1)
     {
-	    printf("usage: ./push_swap <int arguments>\n");
+	    //printf("usage: ./push_swap <int arguments>\n");
 	    return (EXIT_FAILURE);
     }
     t_list  *a = NULL;
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
     (void)b;
 	if (!is_sorted(a))
 	{
-		// printf("Already sorted\n");
+		printf("Error\n"); // Already sorted
 		return 0;
     }
 	size = get_stack_size(a);

@@ -6,7 +6,7 @@
 /*   By: mvillarr <mvillarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 15:29:27 by mvillarr          #+#    #+#             */
-/*   Updated: 2023/03/02 14:17:29 by mvillarr         ###   ########.fr       */
+/*   Updated: 2023/04/04 20:05:52 by mvillarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_lstsize(t_list *lst)
 	int	l;
 
 	l = 0;
-	while (l != '\0')
+	while (lst)
 	{
 		lst = lst->next;
 		l++;
