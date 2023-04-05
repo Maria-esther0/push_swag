@@ -6,7 +6,7 @@
 /*   By: mvillarr <mvillarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 12:28:57 by mvillarr          #+#    #+#             */
-/*   Updated: 2023/04/04 20:07:57 by mvillarr         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:55:17 by mvillarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	print_list(t_list **head)
 	while (tmp)
 	{
 		//printf("--------------\n");
-		printf("%d\n", tmp->data);
+		//printf("%d\n", tmp->data);
 		tmp = tmp->next;
 	}
 }

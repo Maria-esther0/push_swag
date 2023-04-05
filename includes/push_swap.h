@@ -6,7 +6,7 @@
 /*   By: mvillarr <mvillarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 15:23:29 by mvillarr          #+#    #+#             */
-/*   Updated: 2023/04/04 19:48:58 by mvillarr         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:04:24 by mvillarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,8 @@ void	free_strs(char **strs);
 int	set_node(t_list **a, char *arg);
 int	fill_stack(t_list **a, char **argv);
 void	print_list(t_list **head);
+
+void    display_lst(t_list **ptr_to_head, char *name);
+void    display_node(t_list *lst);
 
 #endif

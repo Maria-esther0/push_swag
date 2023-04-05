@@ -6,7 +6,7 @@
 /*   By: mvillarr <mvillarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 17:45:16 by mvillarr          #+#    #+#             */
-/*   Updated: 2023/03/30 16:34:16 by mvillarr         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:04:41 by mvillarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,3 +26,50 @@ int is_sorted(t_list *a)
     }
     return 0;
 }
+
+void    display_lst(t_list **ptr_to_head, char *name)
+{
+    t_list    *current_node;
+    int        count;
+
+    current_node = *ptr_to_head;
+    count = 0;
+    printf("\n%s :\n", name);
+    if (*ptr_to_head != NULL)
+    {
+        while (current_node->next != NULL)
+        {
+            printf("Index = %d : ", count);
+            display_node(current_node);
+            current_node = current_node->next;
+            count++;
+        }
+        printf("Index = %d : ", count);
+        display_node(current_node);
+    }
+    else
+        printf("The stack is empty.\n");
+    printf("\n");
+}
+
+void    display_node(t_list *lst)
+{
+    if (lst != NULL)
+    {
+        printf("[%p] {value = %d | indice = %d | nx = %p}\n", lst,
+            lst->data,
+            lst->data,
+            lst->next);
+    }
+}
+
+// void    display_node(t_list lst)
+// {
+//     if (lst != NULL)
+//     {
+//         printf("[%p] {value = %d | indice = %d | nx = %p}\n", lst,
+//             lst->data,
+//             lst->data,
+//             lst->next);
+//     }
+// }

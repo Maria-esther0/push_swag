@@ -6,7 +6,7 @@
 /*   By: mvillarr <mvillarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:18:16 by mvillarr          #+#    #+#             */
-/*   Updated: 2023/03/21 16:29:31 by mvillarr         ###   ########.fr       */
+/*   Updated: 2023/04/05 11:31:30 by mvillarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void    pb(t_list **stack_a, t_list **stack_b)
 {
     t_list  *push_a;
 
-    if (!stack_a)
+    if (!*stack_a)
         exit(1);
     push_a = (*stack_a)->next;
     (*stack_a)->next = *stack_b;

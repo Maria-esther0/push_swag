@@ -58,8 +58,11 @@ int main(int argc, char *argv[])
             arrange_5_arg(&a, &b);
         else
             algo(a, b, size);
+        printf("END\n");
     }
-	print_list(&a);
+    printf("END\n");
+	// print_list(&a);
+    display_lst(&a, "stack_a");
 	free_list_a(a);
 	free_list_b(b);
    return (0);
