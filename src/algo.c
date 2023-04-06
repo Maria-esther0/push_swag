@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvillarr <mvillarr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mariavillarroel <mariavillarroel@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 10:17:39 by mvillarr          #+#    #+#             */
-/*   Updated: 2023/04/05 17:01:01 by mvillarr         ###   ########.fr       */
+/*   Updated: 2023/04/06 22:52:57 by mariavillar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int max(t_list *stack)
 	return max;
 }
 
-void    algo(t_list *stack_a, t_list *stack_b, int size)
+/*void    algo(t_list *stack_a, t_list *stack_b, int size)
 {
     (void)size;
     int i;
@@ -60,7 +60,7 @@ void    algo(t_list *stack_a, t_list *stack_b, int size)
             if (stack_a == NULL)
                 printf("stack a est vide\n");
             //if ((j >> i) & (j == 0))
-            if (((tmp->data >> j) & 1)== 0)
+            if (((tmp->data >> j) & 1)== 1)
             {
                // printf("ca rentre dans la premiere boucle\n");
                 pb(&stack_a, &stack_b);
@@ -77,6 +77,52 @@ void    algo(t_list *stack_a, t_list *stack_b, int size)
         }
        // ft_printf("AAAA\n");
         // printf("%d\n", stack_b == NULL);
+        while (stack_b != NULL)
+        {
+            printf("ca rentre dans la troisieme boucle \n");
+            pa(&stack_a, &stack_b);
+        }
+        j++;
+        display_lst(&stack_a, "stack_a");
+        display_lst(&stack_b, "stack_b");
+    }
+    printf("SORTIE\n");
+}*/
+
+void    algo(t_list *stack_a, t_list *stack_b, int size)
+{
+    (void)size;
+    int i;
+    int j;
+    int maxi;
+    int len;
+    t_list *tmp;
+
+    j = 0;
+    tmp = stack_a; // ERROR: No es necesario asignar 'tmp' a 'stack_a' aquí, ya que no se utiliza hasta más adelante en el bucle.
+    maxi = max(stack_a);
+    len = ft_lstsize(stack_a);
+    printf("len_algo:%d\n", len);
+    while (j <= bit_size(maxi))
+    {
+        i = 0;
+        while (i < len)
+        { 
+            tmp = stack_a; // ERROR: Esto no hace nada útil, ya que 'stack_a' no cambia.
+            if (stack_a == NULL) // ERROR: Esto siempre es falso, ya que 'stack_a' nunca es nulo aquí. Debería ser 'if (tmp == NULL)'.
+                printf("stack a est vide\n");
+            if (((tmp->data >> j) & 1)== 0) // ERROR: Estás comprobando el primer bit del primer elemento de la lista en lugar del i-ésimo elemento.
+            {
+                pb(&stack_a, &stack_b);
+                // ra(&stack_a); // ERROR: No necesitas rotar 'stack_a' aquí.
+            }
+            else
+            {
+                //ra(&stack_a); // ERROR: No necesitas rotar 'stack_a' aquí.
+                pb(&stack_a, &stack_b);
+            }
+            i++;
+        }
         while (stack_b != NULL)
         {
             printf("ca rentre dans la troisieme boucle \n");
