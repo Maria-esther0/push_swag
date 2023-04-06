@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_a_is_sorted.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvillarr <mvillarr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mariavillarroel <mariavillarroel@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 17:45:16 by mvillarr          #+#    #+#             */
-/*   Updated: 2023/04/05 16:04:41 by mvillarr         ###   ########.fr       */
+/*   Updated: 2023/04/06 16:53:49 by mariavillar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,3 +73,5 @@ void    display_node(t_list *lst)
 //             lst->next);
 //     }
 // }
+
+// bla bla bla
