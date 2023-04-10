@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
         else if (size == 5)
             arrange_5_arg(&a, &b);
         else
-            algo(a, b, size);
+            algo(a, b);
         printf("END\n");
     }
     printf("END\n");
@@ -67,3 +67,4 @@ int main(int argc, char *argv[])
 	free_list_b(b);
    return (0);
 }
+

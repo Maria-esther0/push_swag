@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
 static int    bit_size(int size);
 int	ft_lstsize(t_list *lst);
 
@@ -89,50 +90,36 @@ int max(t_list *stack)
     printf("SORTIE\n");
 }*/
 
-void    algo(t_list *stack_a, t_list *stack_b, int size)
+void    algo(t_list *stack_a, t_list *stack_b)
 {
-    (void)size;
-    int i;
-    int j;
-    int maxi;
-    int len;
-    t_list *tmp;
+	t_utils utils;
 
-    j = 0;
-    tmp = stack_a; // ERROR: No es necesario asignar 'tmp' a 'stack_a' aquí, ya que no se utiliza hasta más adelante en el bucle.
-    maxi = max(stack_a);
-    len = ft_lstsize(stack_a);
-    printf("len_algo:%d\n", len);
-    while (j <= bit_size(maxi))
+	utils.j = 0;
+    utils.tmp = stack_a; // ERROR: No es necesario asignar 'tmp' a 'stack_a' aquí, ya que no se utiliza hasta más adelante en el bucle.
+    utils.maxi = max(stack_a);
+    utils.len = ft_lstsize(stack_a);
+    while (utils.j <= bit_size(utils.maxi))
     {
-        i = 0;
-        while (i < len)
-        { 
-            tmp = stack_a; // ERROR: Esto no hace nada útil, ya que 'stack_a' no cambia.
+        utils.i = 0;
+        while (utils.i < utils.len)
+        {
+            utils.tmp = stack_a; // ERROR: Esto no hace nada útil, ya que 'stack_a' no cambia.
             if (stack_a == NULL) // ERROR: Esto siempre es falso, ya que 'stack_a' nunca es nulo aquí. Debería ser 'if (tmp == NULL)'.
                 printf("stack a est vide\n");
-            else if (((tmp->data >> j) & 1)== 0) // ERROR: Estás comprobando el primer bit del primer elemento de la lista en lugar del i-ésimo elemento.
-            {
+            else if (((utils.tmp->data >> utils.j) & 1)== 0) // ERROR: Estás comprobando el primer bit del primer elemento de la lista en lugar del i-ésimo elemento.
                 pb(&stack_a, &stack_b);
                 // ra(&stack_a); // ERROR: No necesitas rotar 'stack_a' aquí.
-            }
             else
-            {
-                //ra(&stack_a); // ERROR: No necesitas rotar 'stack_a' aquí.
-                pb(&stack_a, &stack_b);
-            }
-            i++;
+                ra(&stack_a); // ERROR: No necesitas rotar 'stack_a' aquí.
+				// pb(&stack_a, &stack_b);
+			utils.i++;
         }
         while (stack_b != NULL)
-        {
-            printf("ca rentre dans la troisieme boucle \n");
             pa(&stack_a, &stack_b);
-        }
-        j++;
-        display_lst(&stack_a, "stack_a");
-        display_lst(&stack_b, "stack_b");
+		utils.j++;
     }
-    printf("SORTIE\n");
+	display_lst(&stack_a, "stack_a");
+	display_lst(&stack_b, "stack_b");
 }
 
 int	ft_lstsize(t_list *lst)

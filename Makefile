@@ -104,7 +104,7 @@ $(LIB2):
 $(OBJ_DIR)/%.o: %.c
 		@echo "Compiling $<..."
 		mkdir -p obj/src
-		$(CC) $(CFLAGS) -c $< -o $@ >/dev/null 2>&1
+		$(CC) $(CFLAGS) -c $< -o $@ #>/dev/null 2>&1
 
 $(NAME): $(LIB) $(LIB2) $(OBJ)
 		$(CC) $(CFLAGS) $(OBJ) $(LIB) $(LIB2) -o $(NAME)

@@ -41,11 +41,16 @@
 
 typedef struct s_utils
 {
-    int first;
-    int second;
-    int third;
-    int fourth;
-    int fifth;
+	t_list *tmp;
+	int i;
+	int j;
+	int maxi;
+	int len;
+	int first;
+	int second;
+	int third;
+	int fourth;
+	int fifth;
 }   t_utils;
 
 //quick sort functions
@@ -61,7 +66,7 @@ void    second_pa_5arg(t_list   **stack_a);
 void    global_move(t_list  **stack_a);
 
 // shamefully radix sort
-void    algo(t_list *stack_a, t_list *stack_b, int num);
+void    algo(t_list *stack_a, t_list *stack_b);
 int    is_sorted(t_list *a);
 int max(t_list *stack);
 
