@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
     t_list  *a = NULL;
     t_list  *b = NULL;
     fill_stack(&a, argv);
-    (void)b;
+	(void)b;
 	if (!is_sorted(a))
 	{
 		printf("error\n"); // Already sorted
@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
         else if (size == 5)
             arrange_5_arg(&a, &b);
         else
-            algo(a, b);
+            algo(&a, &b);
         printf("END\n");
     }
     printf("END\n");

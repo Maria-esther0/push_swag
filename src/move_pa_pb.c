@@ -19,7 +19,7 @@ void	pa(t_list	**stack_a, t_list	**stack_b)
 {
 	t_list	*push_b;
 
-    if (!*stack_b)
+    if (*stack_b == NULL)
         exit(1);
     push_b = (*stack_b)->next;
     (*stack_b)->next = *stack_a;
@@ -32,8 +32,10 @@ void    pb(t_list **stack_a, t_list **stack_b)
 {
     t_list  *push_a;
 
-    if (!*stack_a)
-        exit(1);
+    if (*stack_a == NULL)
+	{
+		exit(1);
+	}
     push_a = (*stack_a)->next;
     (*stack_a)->next = *stack_b;
     *stack_b = *stack_a;
