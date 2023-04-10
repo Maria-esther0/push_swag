@@ -82,10 +82,10 @@ int	fill_stack(t_list **a, char **argv)
 	while (argv[i])
 	{
 		if (set_node(a, argv[i]))
-			return (-1);
+			return (1);
 		i++;
 	}
-	//print_list(a);
+//	print_list(a);
 	return 0;
 }
 

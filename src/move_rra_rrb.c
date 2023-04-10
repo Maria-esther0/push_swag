@@ -19,7 +19,7 @@ static void rev_rot(t_list **stack)
 	t_list	*last;
     t_list  *new_element;
 
-    if (!stack || !(*stack) || !(*stack)->next);
+    if (!stack || !(*stack) || !(*stack)->next)
         return ;
     last = *stack;
     while (last->next && last->next->next)

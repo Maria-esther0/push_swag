@@ -26,7 +26,7 @@ static void rotate(t_list **stack)
     }
     *stack = top->next;
     top->next = NULL;
-    ft_lstlast(*stack);
+    ft_lstlast(*stack)->next = top;
 }
 
 void    ra(t_list **stack_a)

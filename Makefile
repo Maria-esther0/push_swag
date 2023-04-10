@@ -68,7 +68,7 @@ NAME	= push_swap
 LIB		= src/LIBFT/ft_libft/libft.a
 LIB2	= src/LIBFT/libftprintf/libftprintf.a
 CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror -g3 #-fsanitize=address
 SRC		= 	src/push_swap.c\
 			src/quick_sort.c\
 			src/move_pa_pb.c\
