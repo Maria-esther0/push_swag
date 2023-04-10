@@ -15,21 +15,18 @@
 // at first, we push the first 2 numbers on stack b, then we use the fonction
 // that sorts 3 args, then we push on stack a once, we put it on the right spot
 // then we repeat the process once again and voila :D
-//printf("%d %d %d %d %d\n", (*stack_a)->data, (*stack_a)->next->data, (*stack_a)->next->next->data,
-//(*stack_a)->next->next->next->data, (*stack_a)->next->next->next->next->data);
+//t_list *current = *stack_a;
+//int i = 0;
+//while (current != NULL)
+//{
+//printf("[%d] %d ", i, current->data);
+//current = current->next;
+//i++;
+//}
 void    arrange_5_arg(t_list    **stack_a, t_list   **stack_b)
 {
-
 	pb(stack_a, stack_b);
 	pb(stack_a, stack_b);
-	t_list *current = *stack_a;
-	int i = 0;
-	while (current != NULL)
-	{
-		printf("[%d] %d ", i, current->data);
-		current = current->next;
-		i++;
-	}
 	arrange_3_arg(stack_a);
 	pa(stack_a, stack_b);
 	fisrt_pa_5arg(stack_a);

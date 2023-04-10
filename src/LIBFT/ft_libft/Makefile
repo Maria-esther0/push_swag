@@ -46,29 +46,35 @@ SRCS_BONUS	=	ft_lstnew_bonus.c \
 				ft_lstiter_bonus.c \
 				ft_lstmap_bonus.c \
 
-OBJS	= ${SRCS:.c=.o}
-
-OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+OBJ_DIR = obj
+OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
+OBJS_BONUS = $(SRCS_BONUS:%.c=$(OBJ_DIR)/%.o)
+#OBJS	= ${SRCS:.c=.o}
+#OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 CFLAGS 	= -Wall -Wextra -Werror
 
 RM		= rm -f
 
+$(OBJ_DIR)/%.o: %.c
+	mkdir -p obj/src
+	$(CC) $(CFLAGS) -c $< -o $@
+
 ${NAME}:	$(OBJS)
-			ar rcs $(NAME) $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
 bonus: $(OBJS) $(OBJS_BONUS)
 	ar rcs $(NAME) $(OBJS) $(OBJS_BONUS)
 	
-all: 		${NAME}
+all: ${NAME}
 
-run:		${OBJS}	
-			${FLAGS} -o ${NAME} ${SRC}
+run: ${OBJS}
+	${FLAGS} -o ${NAME} ${SRC} ${OBJS}
 clean:		
-			${RM} ${OBJS}
+	${RM} ${OBJS} ${OBJS_BONUS}
 
 fclean:		clean
-			${RM} ${NAME}
+	${RM} ${NAME}
 
 re:			fclean all
 
