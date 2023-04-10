@@ -6,7 +6,9 @@ CFLAGS	= -Wall -Werror -Wextra
 
 NAME	= libftprintf.a
 
-OBJS	= ${SRCS:.c=.o}
+#OBJS	= ${SRCS:.c=.o}
+OBJ_DIR = obj
+OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
 SRCS	=	ft_printf.c \
 			ft_put_c.c \
@@ -18,12 +20,16 @@ SRCS	=	ft_printf.c \
 			ft_check_type.c\
 
 
-%.o: %.c
-		$(CC) $(CFLAGS) -o $@ -c $<
+#%.o: %.c
+#		$(CC) $(CFLAGS) -o $@ -c $<
+
+$(OBJ_DIR)/%.o: %.c
+	mkdir -p obj/src
+	$(CC) $(CFLAGS) -c $< -o $@
 
 ${NAME}: ${OBJS}
-#		$(CC) $(CFLAGS) $(SRCS) -o ft_printf
-		ar rcs $(NAME) $(OBJS)
+#	$(CC) $(CFLAGS) $(SRCS) -o ft_printf
+	ar rcs $(NAME) $(OBJS)
 
 all: ${NAME}
 

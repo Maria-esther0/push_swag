@@ -81,30 +81,33 @@ SRC		= 	src/push_swap.c\
 			src/arrange_big_stack.c\
 			src/algo.c\
 			src/main.c
+OBJ_DIR = obj
+OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
-OBJ		= $(SRC:.c=.o)
+#OBJ		= $(SRC:.c=.o)
 
 #%.o: %.c
 #	$(CC) $(CFLAG) -c $< -o $@
-	
+
 all: $(NAME)
 
+export MAKEFLAGS += --silent
+
 $(LIB): 
-		make -C src/LIBFT/ft_libft/
+		@echo "Building $@..."
+		make --silent -C src/LIBFT/ft_libft/
 		
 $(LIB2): 
-		make -C src/LIBFT/libftprintf/
+		@echo "Building $@..."
+		make --silent -C src/LIBFT/libftprintf/
 
-
+$(OBJ_DIR)/%.o: %.c
+		@echo "Compiling $<..."
+		mkdir -p obj/src
+		$(CC) $(CFLAGS) -c $< -o $@ >/dev/null 2>&1
 
 $(NAME): $(LIB) $(LIB2) $(OBJ)
 		$(CC) $(CFLAGS) $(OBJ) $(LIB) $(LIB2) -o $(NAME)
-# test:
-# 		cd push_swap_tester/ && bash tester.sh ../../push_swap 2 100
-# 		cd push_swap_tester/ && bash tester.sh ../../push_swap 3 100
-# 		cd push_swap_tester/ && bash tester.sh ../../push_swap 5 100
-# 		cd push_swap_tester/ && bash tester.sh ../../push_swap 100 100
-# 		cd push_swap_tester/ && bash tester.sh ../../push_swap 500 100
 
 clean:
 		rm -rf $(OBJ)

@@ -50,15 +50,14 @@ int main(int argc, char *argv[])
     {
         if (!is_sorted(a))
             break ;
-		if (size == 2)
+		if (size == 3)
+			arrange_3_arg(&a);
+		else if (size == 2)
             arrange_2_arg(&a);
-		else if (size == 3)
-		    arrange_3_arg(&a);
         else if (size == 5)
             arrange_5_arg(&a, &b);
-
-//        else
-//            algo(a, b, size);
+        else
+            algo(a, b, size);
         printf("END\n");
     }
     printf("END\n");
