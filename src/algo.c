@@ -111,7 +111,7 @@ void    algo(t_list *stack_a, t_list *stack_b, int size)
             tmp = stack_a; // ERROR: Esto no hace nada útil, ya que 'stack_a' no cambia.
             if (stack_a == NULL) // ERROR: Esto siempre es falso, ya que 'stack_a' nunca es nulo aquí. Debería ser 'if (tmp == NULL)'.
                 printf("stack a est vide\n");
-            if (((tmp->data >> j) & 1)== 0) // ERROR: Estás comprobando el primer bit del primer elemento de la lista en lugar del i-ésimo elemento.
+            else if (((tmp->data >> j) & 1)== 0) // ERROR: Estás comprobando el primer bit del primer elemento de la lista en lugar del i-ésimo elemento.
             {
                 pb(&stack_a, &stack_b);
                 // ra(&stack_a); // ERROR: No necesitas rotar 'stack_a' aquí.

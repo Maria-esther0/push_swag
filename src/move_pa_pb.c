@@ -19,11 +19,10 @@ void	pa(t_list	**stack_a, t_list	**stack_b)
 {
 	t_list	*push_b;
 
-    if (!stack_b)
+    if (!*stack_b)
         exit(1);
     push_b = (*stack_b)->next;
     (*stack_b)->next = *stack_a;
-    //push_b = *stack_a;
     *stack_a = *stack_b;
     *stack_b = push_b;
     write(1, "pa\n", 3);

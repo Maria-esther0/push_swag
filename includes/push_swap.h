@@ -32,12 +32,12 @@
     // struct s_data *next;
 // }   t_data;
 
-typedef struct s_list
-{
-    int data;
-    struct s_list *next;
-    struct s_list *previous;
-}       t_list;
+//typedef struct s_list
+//{
+//    int data;
+//    struct s_list *next;
+//    struct s_list *previous;
+//}       t_list;
 
 typedef struct s_utils
 {

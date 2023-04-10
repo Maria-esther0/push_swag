@@ -15,6 +15,7 @@
 void    arrange_2_arg(t_list    **stack_a)
 {
     // if ((*stack_a)->data > (*stack_a)->next->data)
+	printf("%d %d\n", (*stack_a)->data, (*stack_a)->next->data);
     sa(stack_a);
 }
 
@@ -84,7 +85,7 @@ void     arrange_3_arg(t_list    **stack_a)
         // printf("BOUCLE 5\n");
         rra(stack_a);
     }
-}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+}
    /*t_utils utils;
     utils.first = (*stack_a)->data;
     utils.second = (*stack_a)->next->data;
