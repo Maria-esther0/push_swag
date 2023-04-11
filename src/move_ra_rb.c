@@ -19,7 +19,7 @@ static void rotate(t_list **stack)
     t_list  *top;
 
     top = *stack;
-    if(!(*stack) || !((*stack)->next))
+    if((*stack) == NULL || ((*stack)->next) == NULL)
     {
         print_list(stack);
         exit(1);

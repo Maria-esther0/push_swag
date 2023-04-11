@@ -61,8 +61,8 @@ int	set_node(t_list **a, char *arg)
 
 	i = -1;
 	args = ft_split(arg, ' ');
-	if (!args)
-		return (-1);
+	if (args == NULL)
+		return (1);
 	res = 0;
 	while (args[++i])
 	{

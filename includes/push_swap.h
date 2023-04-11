@@ -46,6 +46,8 @@ typedef struct s_utils
 	int j;
 	int maxi;
 	int len;
+	int neg_mask;
+
 	int first;
 	int second;
 	int third;
@@ -66,7 +68,7 @@ void    second_pa_5arg(t_list   **stack_a);
 void    global_move(t_list  **stack_a);
 
 // shamefully radix sort
-void    algo(t_list *stack_a, t_list *stack_b);
+void    algo(t_list **stack_a, t_list **stack_b);
 int    is_sorted(t_list *a);
 int max(t_list *stack);
 
