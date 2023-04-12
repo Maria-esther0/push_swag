@@ -32,10 +32,7 @@ int main(int argc, char *argv[])
     int size;
 
     if (argc <= 1)
-    {
-	    //printf("usage: ./push_swap <int arguments>\n");
 	    return (EXIT_FAILURE);
-    }
     t_list  *a = NULL;
     t_list  *b = NULL;
     fill_stack(&a, argv);
@@ -50,17 +47,23 @@ int main(int argc, char *argv[])
     {
         if (!is_sorted(a))
             break ;
-		if (size == 3)
-			arrange_3_arg(&a);
 		else if (size == 2)
             arrange_2_arg(&a);
+        if (size == 3)
+			arrange_3_arg(&a);
+        else if (size == 4)
+		{
+            arrange_4_arg(&a, &b);
+			// display_lst(&a, "after 4");
+		}
         else if (size == 5)
+		{
             arrange_5_arg(&a, &b);
+		}
         else
             algo(&a, &b);
-        printf("END\n");
+		// display_lst(&a, "after 5");
     }
-    printf("END\n");
 	// print_list(&a);
     display_lst(&a, "stack_a");
 	free_list_a(a);

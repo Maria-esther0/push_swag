@@ -6,7 +6,7 @@
 /*   By: mvillarr <mvillarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 15:23:29 by mvillarr          #+#    #+#             */
-/*   Updated: 2023/04/05 16:04:24 by mvillarr         ###   ########.fr       */
+/*   Updated: 2023/04/12 17:06:53 by mvillarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,6 @@
 #include <limits.h>
 #include "../src/LIBFT/ft_libft/libft.h"
 #include "../src/LIBFT/libftprintf/ft_printf.h"
-
-// typedef struct s_data
-// {
-    // int index;
-    // int n;
-    // int f;
-    // int number;
-// 
-// 
-    // struct s_data *next;
-// }   t_data;
-
-//typedef struct s_list
-//{
-//    int data;
-//    struct s_list *next;
-//    struct s_list *previous;
-//}       t_list;
 
 typedef struct s_utils
 {
@@ -59,13 +41,18 @@ typedef struct s_utils
 //void    QS_algo(int str[], int low, int high);
 // void    print_str(int str[], int size);
 void    ft_swap(int *a, int *b);
-// int     pivot_index(int str[], int low, int high);
-void    arrange_2_arg(t_list    **stack_a);
-void    arrange_3_arg(t_list    **stack_a);
-void    arrange_5_arg(t_list    **stack_a, t_list   **stack_b);
-void    fisrt_pa_5arg(t_list    **stack_a);
-void    second_pa_5arg(t_list   **stack_a);
-void    global_move(t_list  **stack_a);
+void	arrange_2_arg(t_list    **stack_a);
+void	arrange_3_arg(t_list    **stack_a);
+void	arrange_4_arg(t_list **stack_a, t_list **stack_b);
+void	arrange_5_arg(t_list    **stack_a, t_list   **stack_b);
+void	fisrt_pa_5arg(t_list    **stack_a);
+void	second_pa_5arg(t_list   **stack_a);
+void	global_move(t_list  **stack_a);
+void	util_4_arg(t_list **stack_a);
+void    first_case(t_list **a);
+void    second_case(t_list **a);
+int		get_stack_size(t_list *a);
+
 
 // shamefully radix sort
 void    algo(t_list **stack_a, t_list **stack_b);
@@ -84,8 +71,6 @@ void    rr(t_list **stack_a, t_list **stack_b);
 void    rra(t_list **stack_a);
 void    rrb(t_list **stack_b);
 void    rrr(t_list **stack_a, t_list **stack_b);
-void    first_case(t_list **a);
-void    second_case(t_list **a);
 
 //outils
 t_list  *ft_lstlast(t_list *list);

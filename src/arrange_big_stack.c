@@ -30,17 +30,20 @@ void    arrange_5_arg(t_list    **stack_a, t_list   **stack_b)
 	arrange_3_arg(stack_a);
 	pa(stack_a, stack_b);
 	fisrt_pa_5arg(stack_a);
+	pa(stack_a, stack_b);
 	second_pa_5arg(stack_a);
 }
 
 void    fisrt_pa_5arg(t_list    **stack_a)
 {
-	// y a rien dans i, a quoi ca sert ?!
-    t_utils i;
+	int first = (*stack_a)->data;
+	int second = (*stack_a)->next->data;
+	int third = (*stack_a)->next->next->data;
+	int	fourth = (*stack_a)->next->next->next->data;
 
+	// printf("ca rentre dans la fct first_pa_5_arg\n");
     global_move(stack_a);
-	// si le dernier element est plus petit que le premier on rentre pas dans la boucle et on se retrouve avec deux element au prochain tour.
-    if ((i.first > (i.second && i.third)) && (i.first > i.fourth))
+    if (((first > second) && (first > third)) && (first < fourth))
     {
         rra(stack_a);
         sa(stack_a);
@@ -49,19 +52,23 @@ void    fisrt_pa_5arg(t_list    **stack_a)
     }
 }
 
-void    second_pa_5arg(t_list   **stack_a)
+void	second_pa_5arg(t_list **stack_a)
 {
-    t_utils i;
-    
-    global_move(stack_a);
-    if ((i.first > (i.second && i.third && i.fourth)) && (i. first < i.fifth))
-    {
-        rra(stack_a);
-        sa(stack_a);
-        ra(stack_a);
-        ra(stack_a);
-    }
-    else if ((i.first > (i.second && i.third)) && (i.first < (i.fourth && i.fifth)))
+	int first = (*stack_a)->data;
+	int second = (*stack_a)->next->data;
+	int third = (*stack_a)->next->next->data;
+	int	fourth = (*stack_a)->next->next->next->data;
+	int fifth = (*stack_a)->next->next->next->next->data;
+
+	global_move(stack_a);
+	if (((first > second) && ((first > third) && (first > fourth))) && (first < fifth)) // 4 | 1 2 3 x 5
+	{
+		rra(stack_a);
+		sa(stack_a);
+		ra(stack_a);
+		ra(stack_a);
+	}
+	else if (((first > second) && (first > third)) && ((first < fourth) && (first < fifth))) // 3 | 1 2 x 4 5
 	{
 		rra(stack_a);
 		sa(stack_a);
@@ -71,19 +78,51 @@ void    second_pa_5arg(t_list   **stack_a)
 		ra(stack_a);
 		ra(stack_a);
 	}
-
 }
-
-// if 2nd arg is less than 1st, then we swap in both cases(1st & 2nd pa),
+// if 2nd arg is smaller than 1st, then we swap in both cases(1st & 2nd pa),
 // if 1st is bigger than last arg, we ra in both cases 
 void    global_move(t_list  **stack_a)
 {
-    t_utils i;
+	int fifth = 0;
+	if (get_stack_size(*stack_a) == 5)
+		fifth = (*stack_a)->next->next->next->next->data;
+    int first = (*stack_a)->data;
+	int second = (*stack_a)->next->data;
+	int third = (*stack_a)->next->next->data;
+	int	fourth = (*stack_a)->next->next->next->data;
 
-    if (i.first > (i.second && i.third && i.fourth && i.fifth) || 
-        (i.first > (i.second && i.third && i.fourth)))
-        ra(stack_a);
-    if (((i.first > i.second) && (i.first < (i.third && i.fourth && i.fifth))) ||
-        ((i.first > i.second) && (i.first < (i.third && i.fourth))))
-        sa(stack_a);
+    if (((first > second) && (first > third) && (first > fourth) && (first > fifth)) || ((first > second) && (first >third) && (first > fourth)))
+        	ra(stack_a);
+    else if (((first > second) && (first < third && (first < fourth) && (first < fifth))) || ((first > second) && ((first < third) && (first < fourth))))
+        	sa(stack_a);
+	else
+		return ;
+}
+
+void    arrange_4_arg(t_list **stack_a, t_list **stack_b)
+{
+	pb(stack_a, stack_b);
+	arrange_3_arg(stack_a);
+	pa(stack_a, stack_b);
+	util_4_arg(stack_a);
+}
+
+void	util_4_arg(t_list **stack_a)
+{
+	int first = (*stack_a)->data;
+	int second = (*stack_a)->next->data;
+	int third = (*stack_a)->next->next->data;
+	int	fourth = (*stack_a)->next->next->next->data;
+
+	if ((first > second) && (first > third) && (first < fourth))
+	{
+		rra(stack_a);
+		sa(stack_a);
+		ra(stack_a);
+		ra(stack_a);
+	}
+	else if (first < (third && fourth) && first > second)
+		sa(stack_a);
+	else if (first > (first && second && third))
+		ra(stack_a);
 }
