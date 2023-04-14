@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include <stdlib.h>
 
 // *[10][NULL]
 // a*[NULL]
@@ -52,6 +53,60 @@ void	print_list(t_list **head)
 	}
 }
 
+// max signed integer for 32 bit 2147483647
+// 10 digits
+// 123asdf\0 -> 1
+// asdf123 -> 1
+// 123\0 -> 0
+// 0 -> 0
+// 2147483647 -> 0
+// 2147483648 -> 1
+
+
+// return 0 if the number is valid
+// else return 1
+// copyright <|°_°|>
+int	check_if(const char* arg)
+{
+	int index;
+	int number;
+
+	index = 0;
+	number = 0;
+	while (ft_isdigit(arg[index]) && index <= 10)
+	{
+		if (index == 9 && ((number > 214748364) || (number == 214748364 && arg[index] > '7')))
+			return 1;
+		number = arg[index] - '0' + number * 10;
+		index++;
+	}
+	if (arg[index] != 0)
+		return 1;
+	return 0;
+}
+int check_similair(char **argv, const char *tmp)
+{
+	int i;
+	int count;
+
+	i = 0;
+	count = 1;
+	while(argv[i])
+	{
+		if (!ft_strncmp(tmp, argv[i], ft_strlen(argv[i])) &&
+			(ft_strlen(argv[i]) == ft_strlen(tmp)))
+		{
+			if (count >= 2) {
+				printf("error: similaire = %s\n", argv[i]);
+				return (1);
+			}
+			count++;
+		}
+		i++;
+	}
+	return (0);
+}
+
 int	set_node(t_list **a, char *arg)
 {
 	int 	i;
@@ -66,6 +121,11 @@ int	set_node(t_list **a, char *arg)
 	res = 0;
 	while (args[++i])
 	{
+		if (check_if(args[i]))
+		{
+			printf("invalid number: %s\n", args[i]);
+			exit(1);
+		}
 		// atoi bc we need numbers not a string, puis je mets dans ma liste, je cree un node
 		num = ft_atoi(args[i]);
 		res = insert(a, num);
@@ -79,10 +139,18 @@ int	set_node(t_list **a, char *arg)
 int	fill_stack(t_list **a, char **argv)
 {
 	int i = 1;
+	char* tmp;
+
 	while (argv[i])
 	{
 		if (set_node(a, argv[i]))
+		{
+			printf("error\n");
 			return (1);
+		}
+		tmp = argv[i];
+		if (check_similair(argv, tmp))
+			exit(1);
 		i++;
 	}
 //	print_list(a);

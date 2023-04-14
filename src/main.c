@@ -25,7 +25,13 @@ int get_stack_size(t_list *a)
 		tmp = tmp->next;
     }
     return (i);
-}   
+}
+
+//void	for_size(int size, t_list *a, t_liste *b)
+//{
+//	size = get_stack_size(stack_a)
+//}
+
 
 int main(int argc, char *argv[])
 {
@@ -63,6 +69,7 @@ int main(int argc, char *argv[])
         else
             algo(&a, &b);
 		// display_lst(&a, "after 5");
+//        size--;
     }
 	// print_list(&a);
     display_lst(&a, "stack_a");

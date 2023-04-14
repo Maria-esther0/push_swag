@@ -15,7 +15,7 @@
 int is_sorted(t_list *a)
 {
     t_list *tmp;
-    tmp = a;
+	tmp = a;
     while (tmp->next)
     {
         // if (!tmp->next)
