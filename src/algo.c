@@ -12,17 +12,27 @@
 
 #include "../includes/push_swap.h"
 
-static int    bit_size(int size);
-int	ft_lstsize(t_list *lst);
+//int bit_size(int maxi);
 
-int max(t_list *stack)
+// avoir la taille max de l'index
+static int    bit_size(int size)
 {
-    t_list *tmp;
-	int max;
+	int    bit_max;
 
-    tmp = stack;
+	bit_max = 0;
+	while (size >> bit_max)
+		bit_max++;
+	return (bit_max);
+}
+
+int	max(t_list *stack)
+{
+	t_list	*tmp;
+	int		max;
+
+	tmp = stack;
 	max = tmp->data;
-	while(tmp->next)
+	while (tmp->next)
 	{
 		if (max < tmp->next->data)
 		{
@@ -30,14 +40,16 @@ int max(t_list *stack)
 		}
 		tmp = tmp->next;
 	}
-    //printf("max:%d\n", max);
-	return max;
+	return (max);
 }
 
 int	check_neg(t_list *stack_a)
 {
-	int size = ft_lstsize(stack_a);
-	int length = 0;
+	int	size;
+	int	length;
+
+	size = ft_lstsize(stack_a);
+	length = 0;
 	while (stack_a)
 	{
 		if (stack_a->data <= 0)
@@ -50,7 +62,7 @@ int	check_neg(t_list *stack_a)
 	return (0);
 }
 
-t_list *new_list(t_list *stack_a)
+t_list	*new_list(t_list *stack_a)
 {
 	int min_value = INT_MAX; // Obtenir la valeur minimale dans la liste
 	t_list *current = stack_a;
@@ -63,18 +75,12 @@ t_list *new_list(t_list *stack_a)
 	current = stack_a; // Réinitialiser le pointeur 'current' au début de la liste
 	while (current != NULL) // Parcourir la liste à nouveau et re-définir les valeurs de chaque élément
 	{
-        printf("in the new list\n");
 		if (current->data >= INT_MAX || current->data <= INT_MIN)
-		{
-			printf("value is less than INT_MIN or greater than INT_MAX");
 			return (NULL);
-		}
 		int old_value = current->data;
 		int new_value = old_value - min_value + 1; // Ajuster les nouvelles valeurs
-        printf("%d = %d - %d + 1\n", new_value, old_value, min_value);
 		current->data = new_value;
 		current = current->next;
-		printf("old %d, new %d\n", old_value, new_value);
 	}
 	current = stack_a;
 	stack_a = current;
@@ -125,15 +131,4 @@ int	ft_lstsize(t_list *lst)
 		l++;
 	}
 	return (l);
-}
-
- // avoir la taille max de l'index 
-static int    bit_size(int size)
-{
-    int    bit_max;
-
-    bit_max = 0;
-    while (size >> bit_max)
-        bit_max++;
-    return (bit_max);
 }

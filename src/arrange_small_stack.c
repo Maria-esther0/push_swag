@@ -68,13 +68,3 @@ void     arrange_3_arg(t_list    **stack_a)
 	else if (first < second && second > third && first > third) // 3 10 2 ✅
 		rra(stack_a);
 }
-/*t_utils utils;
-	utils.first = (*stack_a)->data;
-	utils.second = (*stack_a)->next->data;
-	utils.third = (*stack_a)->next->next->data;
-	if(utils.first < (utils.second && utils.third))   
-		first(&utils, stack_a);
-	else if (utils.second < (utils.first && utils.third))
-		second(&utils, stack_a);
-	else if (utils.third < (utils.first && utils.second))
-		third(&utils, stack_a);*/

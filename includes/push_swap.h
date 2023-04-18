@@ -37,25 +37,19 @@ typedef struct s_utils
 	int fifth;
 }   t_utils;
 
-//quick sort functions
-//void    QS_algo(int str[], int low, int high);
-// void    print_str(int str[], int size);
+//algorithm
 void    ft_swap(int *a, int *b);
 void	arrange_2_arg(t_list    **stack_a);
 void	arrange_3_arg(t_list    **stack_a);
 void	arrange_4_arg(t_list **stack_a, t_list **stack_b);
 void	arrange_5_arg(t_list    **stack_a, t_list   **stack_b);
-void	worst_case_5arg(t_list	**stack_a);
 void	util_4_arg(t_list **stack_a);
 void    first_case(t_list **a);
 void    second_case(t_list **a);
 int		get_stack_size(t_list *a);
-
-
-// shamefully radix sort
 void    algo(t_list **stack_a, t_list **stack_b);
-int    is_sorted(t_list *a);
-int max(t_list *stack);
+int		is_sorted(t_list *a);
+int		max(t_list *stack);
 
 //moves 
 void    pa(t_list **stack_a, t_list **stack_b);
@@ -76,11 +70,11 @@ t_list  *last_nbr(t_list *list);
 void	free_list_a(t_list *head);
 void	free_list_b(t_list	*head);
 void	free_strs(char **strs);
-int	set_node(t_list **a, char *arg);
-int	fill_stack(t_list **a, char **argv);
+int		set_node(t_list **a, char *arg);
+int		fill_stack(t_list **a, char **argv);
 void	print_list(t_list **head);
-
 void    display_lst(t_list **ptr_to_head, char *name);
 void    display_node(t_list *lst);
+int		ft_lstsize(t_list *lst);
 
 #endif

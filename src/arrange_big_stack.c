@@ -12,31 +12,6 @@
 
 #include "../includes/push_swap.h"
 
-// at first, we push the first 2 numbers on stack b, then we use the fonction
-// that sorts 3 args, then we push on stack a once, we put it on the right spot
-// then we repeat the process once again and voila :D
-//t_list *current = *stack_a;
-//int i = 0;
-//while (current != NULL)
-//{
-//printf("[%d] %d ", i, current->data);
-//current = current->next;
-//i++;
-//}
-
-//int max_stack(t_list *tmp)
-//{
-//	int i = tmp->data;
-//	while (tmp)
-//	{
-//		printf("%d\n", tmp->data);
-//		if (tmp->data > i)
-//			i = tmp->data;
-//		tmp = tmp->next;
-//	}
-//	return (i);
-//}
-
 static int min_stack(t_list *tmp, int *ind)
 {
 	int i = tmp->data;
@@ -109,8 +84,8 @@ void	util_4_arg(t_list **stack_a)
 		ra(stack_a);
 		ra(stack_a);
 	}
-	else if (first < (third && fourth) && first > second)
+	else if ((first < third) && (first < fourth) && (first > second))
 		sa(stack_a);
-	else if (first > (first && second && third))
+	else if ((first > second) && (first > third))
 		ra(stack_a);
 }
