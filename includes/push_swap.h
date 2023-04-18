@@ -38,6 +38,7 @@ typedef struct s_utils
 }   t_utils;
 
 //algorithm
+
 void    ft_swap(int *a, int *b);
 void	arrange_2_arg(t_list    **stack_a);
 void	arrange_3_arg(t_list    **stack_a);
@@ -71,11 +72,12 @@ void	free_list_a(t_list *head);
 void	free_list_b(t_list	*head);
 void	free_strs(char **strs);
 int		set_node(t_list **a, char *arg);
-int		fill_stack(t_list **a, char **argv);
+int		fill_stack(t_list **a, int ac, char **argv);
 void	print_list(t_list **head);
 void    display_lst(t_list **ptr_to_head, char *name);
 void    display_node(t_list *lst);
 int		ft_lstsize(t_list *lst);
-int 	check_first(const char *av1);
+int 	check_similair(int ac, char **argv, const char *tmp);
+
 
 #endif

@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
 	printf("is digit %d, '%s'\n", !ft_isdigit(ft_atoi(argv[1])), argv[1]);
     t_list  *a = NULL;
     t_list  *b = NULL;
-    fill_stack(&a, argv);
+    fill_stack(&a, argc, argv);
 	if (!is_sorted(a))
 	{
 		printf("error\n"); // Already sorted

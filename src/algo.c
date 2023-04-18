@@ -35,9 +35,7 @@ int	max(t_list *stack)
 	while (tmp->next)
 	{
 		if (max < tmp->next->data)
-		{
 			max = tmp->next->data;
-		}
 		tmp = tmp->next;
 	}
 	return (max);

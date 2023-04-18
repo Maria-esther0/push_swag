@@ -84,28 +84,71 @@ int	check_if(const char* arg)
 		return 1;
 	return 0;
 }
+int	check_one_arg(char **argv)
+{	char **tp;
+	char **tp2;
+	char *tmp;
+	int j;
+	int count;
 
-int check_similair(char **argv, const char *tmp)
-{
+	j = 0;
+	tp = ft_split(argv[1], ' ');
+	tp2 = ft_split(argv[1], ' ');
+	while (tp[j])
+	{
+		int i = 0;
+		count = 0;
+		tmp = tp[j];
+		while (tp2[i]) {
+			printf("%s %s\n", tp2[i], tmp);
+			if (!ft_strncmp(tmp, tp2[i], ft_strlen(tp2[i])) &&
+				(ft_strlen(tp2[i]) == ft_strlen(tmp))) {
+				printf("bef %d %s %s\n", count, tp2[i], tmp);
+				count++;
+				printf("aft %d\n", count);
+				if (count >= 2)
+					return (1);
+			}
+			i++;
+		}
+		j++;
+	}
+//	j = 0;
+//	while(tp[j])
+//	{
+//		free(argv[j]);
+//		tp[j] = NULL;
+//	}
+//	tp[j] = NULL;
+	return (0);
+}
+
+int check_similair(int ac, char **argv, const char *tmp) {
 	int i;
 	int count;
 
 	i = 0;
-	count = 1;
-	while(argv[i])
-	{
-		if (!ft_strncmp(tmp, argv[i], ft_strlen(argv[i])) &&
-			(ft_strlen(argv[i]) == ft_strlen(tmp)))
+	count = 0;
+	if (ac == 2){
+		if (check_one_arg(argv))
 		{
+			printf("error: similaire = %s\n", argv[i]);
+			return (1);
+		}
+	}
+
+	while (argv[i]) {
+		if (!ft_strncmp(tmp, argv[i], ft_strlen(argv[i])) &&
+			(ft_strlen(argv[i]) == ft_strlen(tmp))) {
+			count++;
 			if (count >= 2) {
 				printf("error: similaire = %s\n", argv[i]);
 				return (1);
 			}
-			count++;
 		}
-		i++;
-	}
-	return (0);
+			i++;
+		}
+		return (0);
 }
 
 int	set_node(t_list **a, char *arg)
@@ -137,7 +180,7 @@ int	set_node(t_list **a, char *arg)
 	return (res);
 }
 
-int	fill_stack(t_list **a, char **argv)
+int	fill_stack(t_list **a, int ac, char **argv)
 {
 	int i = 1;
 	char* tmp;
@@ -150,7 +193,7 @@ int	fill_stack(t_list **a, char **argv)
 			return (1);
 		}
 		tmp = argv[i];
-		if (check_similair(argv, tmp))
+		if (check_similair(ac, argv, tmp))
 			exit(1);
 		i++;
 	}
