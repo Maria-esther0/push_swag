@@ -76,5 +76,6 @@ void	print_list(t_list **head);
 void    display_lst(t_list **ptr_to_head, char *name);
 void    display_node(t_list *lst);
 int		ft_lstsize(t_list *lst);
+int 	check_first(const char *av1);
 
 #endif

@@ -32,17 +32,37 @@ int get_stack_size(t_list *a)
 //	size = get_stack_size(stack_a)
 //}
 
+int	check_first(const char *av1)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (av1[i])
+	{
+		if (av1[i] == ' ')
+			j++;
+		i++;
+	}
+	if (j == i)
+	{
+		printf("argument is void\n");
+		return (1);
+	}
+	return (0);
+}
 
 int main(int argc, char *argv[])
 {
     int size;
 
-    if (argc <= 1)
+    if (argc <= 1 || !ft_strlen(argv[1]) || check_first(argv[1]))
 	    return (EXIT_FAILURE);
+	printf("is digit %d, '%s'\n", !ft_isdigit(ft_atoi(argv[1])), argv[1]);
     t_list  *a = NULL;
     t_list  *b = NULL;
     fill_stack(&a, argv);
-	(void)b;
 	if (!is_sorted(a))
 	{
 		printf("error\n"); // Already sorted
@@ -55,7 +75,7 @@ int main(int argc, char *argv[])
             break ;
 		else if (size == 2)
             arrange_2_arg(&a);
-        if (size == 3)
+        else if (size == 3)
 			arrange_3_arg(&a);
         else if (size == 4)
 		{

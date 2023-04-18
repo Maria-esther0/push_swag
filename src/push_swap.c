@@ -73,7 +73,7 @@ int	check_if(const char* arg)
 
 	index = 0;
 	number = 0;
-	while (ft_isdigit(arg[index]) && index <= 10)
+	while (arg[index] == '-' || (ft_isdigit(arg[index]) && index <= 10))
 	{
 		if (index == 9 && ((number > 214748364) || (number == 214748364 && arg[index] > '7')))
 			return 1;
@@ -84,6 +84,7 @@ int	check_if(const char* arg)
 		return 1;
 	return 0;
 }
+
 int check_similair(char **argv, const char *tmp)
 {
 	int i;
