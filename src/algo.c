@@ -12,33 +12,15 @@
 
 #include "../includes/push_swap.h"
 
-//int bit_size(int maxi);
-
 // avoir la taille max de l'index
-static int    bit_size(int size)
+static int	bit_size(int size)
 {
-	int    bit_max;
+	int	bit_max;
 
 	bit_max = 0;
 	while (size >> bit_max)
 		bit_max++;
 	return (bit_max);
-}
-
-int	max(t_list *stack)
-{
-	t_list	*tmp;
-	int		max;
-
-	tmp = stack;
-	max = tmp->data;
-	while (tmp->next)
-	{
-		if (max < tmp->next->data)
-			max = tmp->next->data;
-		tmp = tmp->next;
-	}
-	return (max);
 }
 
 int	check_neg(t_list *stack_a)
@@ -60,23 +42,32 @@ int	check_neg(t_list *stack_a)
 	return (0);
 }
 
-t_list	*new_list(t_list *stack_a)
+void	new_list_second_part(t_list *current, int min)
 {
-	int min_value = INT_MAX; // Obtenir la valeur minimale dans la liste
-	t_list *current = stack_a;
 	while (current != NULL)
 	{
-		if (current->data < min_value)
-			min_value = current->data;
+		if (current->data < min)
+			min = current->data;
 		current = current->next;
 	}
-	current = stack_a; // Réinitialiser le pointeur 'current' au début de la liste
-	while (current != NULL) // Parcourir la liste à nouveau et re-définir les valeurs de chaque élément
+}
+
+t_list	*new_list(t_list *stack_a)
+{
+	int		min_value;
+	int		old_value;
+	int		new_value;
+	t_list	*current;
+
+	min_value = INT_MAX;
+	current = stack_a;
+	new_list_second_part(current, min_value);
+	while (current != NULL)
 	{
 		if (current->data >= INT_MAX || current->data <= INT_MIN)
 			return (NULL);
-		int old_value = current->data;
-		int new_value = old_value - min_value + 1; // Ajuster les nouvelles valeurs
+		old_value = current->data;
+		new_value = old_value - min_value + 1;
 		current->data = new_value;
 		current = current->next;
 	}
@@ -85,48 +76,46 @@ t_list	*new_list(t_list *stack_a)
 	return (stack_a);
 }
 
-void    algo(t_list **stack_a, t_list **stack_b)
+void	algo_second_part(t_list **stack_a, t_list **stack_b, t_utils util)
 {
-	t_utils utils;
-
-	utils.j = 0;
-    utils.tmp = *stack_a;
-	utils.len = ft_lstsize(*stack_a);
-	if (check_neg(utils.tmp))
+	util.tmp = *stack_a;
+	if (check_neg(util.tmp))
 	{
-		if (!(*stack_a = new_list(utils.tmp)))
+		if (!(*stack_a == new_list(util.tmp)))
 			exit(1);
 	}
+}
+
+void	algo(t_list **stack_a, t_list **stack_b)
+{
+	t_utils	utils;
+
+	utils.j = 0;
+	utils.tmp = *stack_a;
+	utils.len = ft_lstsize(*stack_a);
+	algo_second_part(stack_a, stack_b, )
+//	if (check_neg(utils.tmp))
+//	{
+//		if (!(*stack_a == new_list(utils.tmp)))
+//			exit(1);
+//	}
 	utils.maxi = max(*stack_a);
 	while (utils.j <= bit_size(utils.maxi))
-    {
-        utils.i = 0;
-        while (utils.i < utils.len && is_sorted(*stack_a))
-        {
-          	utils.tmp = *stack_a;
+	{
+		utils.i = 0;
+		while (utils.i < utils.len && is_sorted(*stack_a))
+		{
+			utils.tmp = *stack_a;
 			if (utils.tmp == NULL)
-                printf("stack a est vide\n");
+				printf("stack a est vide\n");
 			if (((utils.tmp->data >> utils.j) & 1) == 0)
 				pb(&*stack_a, &*stack_b);
 			else
 				ra(&*stack_a);
 			utils.i++;
-        }
+		}
 		while (*stack_b != NULL)
-            pa(&*stack_a, &*stack_b);
+			pa(&*stack_a, &*stack_b);
 		utils.j++;
-    }
-}
-
-int	ft_lstsize(t_list *lst)
-{
-	int	l;
-
-	l = 0;
-	while (lst)
-	{
-		lst = lst->next;
-		l++;
 	}
-	return (l);
 }

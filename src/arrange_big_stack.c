@@ -12,11 +12,13 @@
 
 #include "../includes/push_swap.h"
 
-static int min_stack(t_list *tmp, int *ind)
+static int	min_stack(t_list *tmp, int *ind)
 {
-	int i = tmp->data;
-	int t = 0;
+	int	i;
+	int	t;
 
+	i = tmp->data;
+	t = 0;
 	while (tmp)
 	{
 		if (tmp->data < i)
@@ -30,12 +32,19 @@ static int min_stack(t_list *tmp, int *ind)
 	return (i);
 }
 
-void    arrange_5_arg(t_list    **stack_a, t_list   **stack_b)
+void	arrange_5_second_part(t_list **stack_a, t_list **stack_b)
 {
-	int min;
-	t_list *tmp;
-	int p;
-	int index;
+	arrange_3_arg(stack_a);
+	pa(stack_a, stack_b);
+	pa(stack_a, stack_b);
+}
+
+void	arrange_5_arg(t_list **stack_a, t_list **stack_b)
+{
+	int		min;
+	t_list	*tmp;
+	int		p;
+	int		index;
 
 	index = 0;
 	min = 0;
@@ -45,24 +54,21 @@ void    arrange_5_arg(t_list    **stack_a, t_list   **stack_b)
 	while (p != 2)
 	{
 		if ((*stack_a)->data == min)
-        {
-            pb(stack_a, stack_b);
-            tmp = *stack_a;
-            min = min_stack(tmp, &index);
-            p++;
-        }
-		if (index > 2) {
-			rra(stack_a);
-		} else {
-			ra(stack_a);
+		{
+			pb(stack_a, stack_b);
+			tmp = *stack_a;
+			min = min_stack(tmp, &index);
+			p++;
 		}
-    }
-    arrange_3_arg(stack_a);
-    pa(stack_a, stack_b);
-    pa(stack_a, stack_b);
+		if (index > 2)
+			rra(stack_a);
+		else
+			ra(stack_a);
+	}
+	arrange_5_second_part(stack_a, stack_b);
 }
 
-void    arrange_4_arg(t_list **stack_a, t_list **stack_b)
+void	arrange_4_arg(t_list **stack_a, t_list **stack_b)
 {
 	pb(stack_a, stack_b);
 	arrange_3_arg(stack_a);
@@ -72,11 +78,15 @@ void    arrange_4_arg(t_list **stack_a, t_list **stack_b)
 
 void	util_4_arg(t_list **stack_a)
 {
-	int first = (*stack_a)->data;
-	int second = (*stack_a)->next->data;
-	int third = (*stack_a)->next->next->data;
-	int	fourth = (*stack_a)->next->next->next->data;
+	int	first;
+	int	second;
+	int	third;
+	int	fourth;
 
+	first = (*stack_a)->data;
+	second = (*stack_a)->next->data;
+	third = (*stack_a)->next->next->data;
+	fourth = (*stack_a)->next->next->next->data;
 	if ((first > second) && (first > third) && (first < fourth))
 	{
 		rra(stack_a);

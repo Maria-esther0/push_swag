@@ -51,3 +51,32 @@ void	free_strs(char **strs)
 	}
 	free(strs);
 }
+
+int	ft_lstsize(t_list *lst)
+{
+	int	l;
+
+	l = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		l++;
+	}
+	return (l);
+}
+
+int	max(t_list *stack)
+{
+	t_list	*tmp;
+	int		max;
+
+	tmp = stack;
+	max = tmp->data;
+	while (tmp->next)
+	{
+		if (max < tmp->next->data)
+			max = tmp->next->data;
+		tmp = tmp->next;
+	}
+	return (max);
+}

@@ -13,33 +13,33 @@
 #include "../includes/push_swap.h"
 
 //Ne fait rien s’il n’y en a qu’un ou aucun
-static void swap(t_list **stack)
+static void	swap(t_list **stack)
 {
-    t_list  *x;
+	t_list	*x;
 
-    if (!(*stack) || !((*stack)->next))
-        exit(1);
-    x = *stack;
-    *stack = (*stack)->next;
-    x->next = (*stack)->next;
-    (*stack)->next = x;
+	if (!(*stack) || !((*stack)->next))
+		exit(1);
+	x = *stack;
+	*stack = (*stack)->next;
+	x->next = (*stack)->next;
+	(*stack)->next = x;
 }
 
-void    sb(t_list **stack_b)
+void	sb(t_list **stack_b)
 {
-    swap(stack_b);
-    write(1, "sb\n", 3);
+	swap(stack_b);
+	write(1, "sb\n", 3);
 }
 
-void    sa(t_list **stack_a)
+void	sa(t_list **stack_a)
 {
-    swap(stack_a);
-    write(1, "sa\n", 3);
+	swap(stack_a);
+	write(1, "sa\n", 3);
 }
 
-void    ss(t_list **stack_a, t_list **stack_b)
+void	ss(t_list **stack_a, t_list **stack_b)
 {
-    swap(stack_a);
-    swap(stack_b);
-    write(1, "ss\n", 3);
+	swap(stack_a);
+	swap(stack_b);
+	write(1, "ss\n", 3);
 }

@@ -12,59 +12,40 @@
 
 #include "../includes/push_swap.h"
 
-void    arrange_2_arg(t_list    **stack_a)
+void	arrange_2_arg(t_list **stack_a)
 {
-	// if ((*stack_a)->data > (*stack_a)->next->data)
 	sa(stack_a);
 }
 
-void    first(t_utils *utils, t_list **stack_a)
-{
-	if (utils->second > utils->third)
-		sa(stack_a);
-	ra(stack_a);
-}
-
-void    second(t_utils *utils, t_list **stack_a)
-{
-	if (utils->first > utils->third)
-		ra(stack_a);
-	sa(stack_a);
-}
-
-void    third(t_utils *utils, t_list **stack_a)
-{
-	if (utils->first > utils->second)
-		sa(stack_a);
-	rra(stack_a);
-}
-
-void    first_case(t_list **a)
+void	first_case(t_list **a)
 {
 	rra(a);
 	sa(a);
 }
 
-void    second_case(t_list **a)
+void	second_case(t_list **a)
 {
 	ra(a);
 	sa(a);
 }
 
-void     arrange_3_arg(t_list    **stack_a)
+void	arrange_3_arg(t_list **stack_a)
 {
-	int first = (*stack_a)->data;
-	int second = (*stack_a)->next->data;
-	int third = (*stack_a)->next->next->data;
+	int	first;
+	int	second;
+	int	third;
 
-	if (first < second && second > third && first < third) // 2 10 3 ✅
+	first = (*stack_a)->data;
+	second = (*stack_a)->next->data;
+	third = (*stack_a)->next->next->data;
+	if (first < second && second > third && first < third)
 		first_case(stack_a);
-	else if (first > second && second < third && first < third) // 3 2 10 ✅
+	else if (first > second && second < third && first < third)
 		sa(stack_a);
-	else if (first > second && second < third && first > third) // 10 2 3 ✅
+	else if (first > second && second < third && first > third)
 		ra(stack_a);
-	else if (first > second && second > third) // 10 3 2 ✅
+	else if (first > second && second > third)
 		second_case(stack_a);
-	else if (first < second && second > third && first > third) // 3 10 2 ✅
+	else if (first < second && second > third && first > third)
 		rra(stack_a);
 }
