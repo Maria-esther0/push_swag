@@ -26,7 +26,7 @@ add_executable(
         src/move_rra_rrb.c
         src/move_sa_sb.c
         src/push_swap.c
-        src/quick_sort.c
+#        src/quick_sort.c
         src/stack_a_is_sorted.c
 #        trash/test2.c
 #        trash/tester_quickSort.c

@@ -13,8 +13,6 @@
 #include "../includes/push_swap.h"
 #include <stdlib.h>
 
-// *[10][NULL]
-// a*[NULL]
 int	insert(t_list **a, int number)
 {
 	t_list	*new_node;
@@ -22,8 +20,8 @@ int	insert(t_list **a, int number)
 
 	new_node = (t_list *)malloc(sizeof(t_list));
 	if (new_node == NULL)
-		return -1;
-	tmp = *a;	
+		return (-1);
+	tmp = *a;
 	new_node->data = number;
 	new_node->next = NULL;
 	if (*a == NULL)
@@ -36,124 +34,60 @@ int	insert(t_list **a, int number)
 		tmp = tmp->next;
 	tmp->next = new_node;
 	new_node->previous = tmp;
-
 	return (0);
 }
 
-void	print_list(t_list **head)
-{
-	t_list *tmp;
-
-	tmp = *head;
-	while (tmp)
-	{
-		//printf("--------------\n");
-		//printf("%d\n", tmp->data);
-		tmp = tmp->next;
-	}
-}
-
-// max signed integer for 32 bit 2147483647
-// 10 digits
-// 123asdf\0 -> 1
-// asdf123 -> 1
-// 123\0 -> 0
-// 0 -> 0
-// 2147483647 -> 0
-// 2147483648 -> 1
-
-
-// return 0 if the number is valid
-// else return 1
-// copyright <|°_°|>
-int	check_if(const char* arg)
-{
-	int index;
-	int number;
-
-	index = 0;
-	number = 0;
-	while (arg[index] == '-' || (ft_isdigit(arg[index]) && index <= 10))
-	{
-		if (index == 9 && ((number > 214748364) || (number == 214748364 && arg[index] > '7')))
-			return 1;
-		number = arg[index] - '0' + number * 10;
-		index++;
-	}
-	if (arg[index] != 0)
-		return 1;
-	return 0;
-}
-int	check_one_arg(char **argv)
-{	char **tp;
-	char **tp2;
-	char *tmp;
-	int j;
-	int count;
-
-	j = 0;
-	tp = ft_split(argv[1], ' ');
-	tp2 = ft_split(argv[1], ' ');
-	while (tp[j])
-	{
-		int i = 0;
-		count = 0;
-		tmp = tp[j];
-		while (tp2[i]) {
-			printf("%s %s\n", tp2[i], tmp);
-			if (!ft_strncmp(tmp, tp2[i], ft_strlen(tp2[i])) &&
-				(ft_strlen(tp2[i]) == ft_strlen(tmp))) {
-				printf("bef %d %s %s\n", count, tp2[i], tmp);
-				count++;
-				printf("aft %d\n", count);
-				if (count >= 2)
-					return (1);
-			}
-			i++;
-		}
-		j++;
-	}
-//	j = 0;
-//	while(tp[j])
+//int	check_similaire2(t_utils utils, char **argv, const char *tmp)
+//{
+//
+//	if (!ft_strncmp(tmp, argv[utils.i], ft_strlen(argv[utils.i]))
+//		&& (ft_strlen(argv[utils.i]) == ft_strlen(tmp)))
 //	{
-//		free(argv[j]);
-//		tp[j] = NULL;
+//		utils.count++;
+//		if (utils.count >= 2)
+//		{
+//			printf("error\n");
+//			return (1);
+//		}
+//		utils.i++;
 //	}
-//	tp[j] = NULL;
-	return (0);
-}
+//	return (0);
+//}
 
-int check_similair(int ac, char **argv, const char *tmp) {
-	int i;
-	int count;
+int	check_similaire(int ac, char **argv, const char *tmp)
+{
+	t_utils	utils;
 
-	i = 0;
-	count = 0;
-	if (ac == 2){
-		if (check_one_arg(argv))
+	utils.i = 0;
+	utils.count = 0;
+	if (ac == 2)
+	{
+		if (check_one_arg(argv, utils))
 		{
-			printf("error: similaire = %s\n", argv[i]);
+			ft_printf("error\n");
 			return (1);
 		}
 	}
-
-	while (argv[i]) {
-		if (!ft_strncmp(tmp, argv[i], ft_strlen(argv[i])) &&
-			(ft_strlen(argv[i]) == ft_strlen(tmp))) {
-			count++;
-			if (count >= 2) {
-				printf("error: similaire = %s\n", argv[i]);
+	while (argv[utils.i])
+	{
+		if (!ft_strncmp(tmp, argv[utils.i], ft_strlen(argv[utils.i]))
+			&& (ft_strlen(argv[utils.i]) == ft_strlen(tmp)))
+		{
+			utils.count++;
+			if (utils.count >= 2)
+			{
+				printf("error\n");
 				return (1);
 			}
 		}
-			i++;
-		}
-		return (0);
+		utils.i++;
+	}
+	return (0);
 }
 
 int	set_node(t_list **a, char *arg)
 {
-	int 	i;
+	int		i;
 	char	**args;
 	int		num;
 	int		res;
@@ -167,10 +101,9 @@ int	set_node(t_list **a, char *arg)
 	{
 		if (check_if(args[i]))
 		{
-			printf("invalid number: %s\n", args[i]);
+			ft_printf("Error\n");
 			exit(1);
 		}
-		// atoi bc we need numbers not a string, puis je mets dans ma liste, je cree un node
 		num = ft_atoi(args[i]);
 		res = insert(a, num);
 		if (res != 0)
@@ -182,21 +115,21 @@ int	set_node(t_list **a, char *arg)
 
 int	fill_stack(t_list **a, int ac, char **argv)
 {
-	int i = 1;
-	char* tmp;
+	int		i;
+	char	*tmp;
 
+	i = 1;
 	while (argv[i])
 	{
 		if (set_node(a, argv[i]))
 		{
-			printf("error\n");
+			ft_printf("error\n");
 			return (1);
 		}
 		tmp = argv[i];
-		if (check_similair(ac, argv, tmp))
+		if (check_similaire(ac, argv, tmp))
 			exit(1);
 		i++;
 	}
-//	print_list(a);
-	return 0;
+	return (0);
 }

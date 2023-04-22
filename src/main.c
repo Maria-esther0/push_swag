@@ -27,11 +27,6 @@ int get_stack_size(t_list *a)
     return (i);
 }
 
-//void	for_size(int size, t_list *a, t_liste *b)
-//{
-//	size = get_stack_size(stack_a)
-//}
-
 int	check_first(const char *av1)
 {
 	int i;
@@ -45,9 +40,8 @@ int	check_first(const char *av1)
 			j++;
 		i++;
 	}
-	if (j == i)
-	{
-		printf("argument is void\n");
+	if (j == i) {
+		ft_printf("argument is void\n");
 		return (1);
 	}
 	return (0);
@@ -57,15 +51,15 @@ int main(int argc, char *argv[])
 {
     int size;
 
+	t_utils utils;
     if (argc <= 1 || !ft_strlen(argv[1]) || check_first(argv[1]))
 	    return (EXIT_FAILURE);
-	printf("is digit %d, '%s'\n", !ft_isdigit(ft_atoi(argv[1])), argv[1]);
     t_list  *a = NULL;
     t_list  *b = NULL;
     fill_stack(&a, argc, argv);
 	if (!is_sorted(a))
 	{
-		printf("error\n"); // Already sorted
+		ft_printf("error\n");
 		return 0;
     }
 	size = get_stack_size(a);
@@ -78,23 +72,23 @@ int main(int argc, char *argv[])
         else if (size == 3)
 			arrange_3_arg(&a);
         else if (size == 4)
-		{
             arrange_4_arg(&a, &b);
-			// display_lst(&a, "after 4");
-		}
         else if (size == 5)
-		{
             arrange_5_arg(&a, &b);
-		}
         else
-            algo(&a, &b);
-		// display_lst(&a, "after 5");
-//        size--;
+            algo(&a, &b, &utils);
     }
-	// print_list(&a);
     display_lst(&a, "stack_a");
 	free_list_a(a);
 	free_list_b(b);
    return (0);
 }
 
+void	print_list(t_list **head)
+{
+	t_list *tmp;
+
+	tmp = *head;
+	while (tmp)
+		tmp = tmp->next;
+}

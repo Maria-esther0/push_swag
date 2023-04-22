@@ -30,6 +30,13 @@ typedef struct s_utils
 	int len;
 	int neg_mask;
 
+	char	**tp;
+	char	**tp2;
+	char	*temp;
+	int		n;
+	int		count;
+	int		x;
+
 	int first;
 	int second;
 	int third;
@@ -48,7 +55,7 @@ void	util_4_arg(t_list **stack_a);
 void    first_case(t_list **a);
 void    second_case(t_list **a);
 int		get_stack_size(t_list *a);
-void    algo(t_list **stack_a, t_list **stack_b);
+void    algo(t_list **stack_a, t_list **stack_b, t_utils *utils);
 int		is_sorted(t_list *a);
 int		max(t_list *stack);
 
@@ -77,7 +84,10 @@ void	print_list(t_list **head);
 void    display_lst(t_list **ptr_to_head, char *name);
 void    display_node(t_list *lst);
 int		ft_lstsize(t_list *lst);
-int 	check_similair(int ac, char **argv, const char *tmp);
+int 	check_similaire(int ac, char **argv, const char *tmp);
+int		check_one_arg(char **argv, t_utils	utils);
+int		check_if(const char *arg);
+int		check_neg(t_list *stack_a);
 
 
 #endif

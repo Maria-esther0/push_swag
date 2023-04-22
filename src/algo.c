@@ -23,25 +23,6 @@ static int	bit_size(int size)
 	return (bit_max);
 }
 
-int	check_neg(t_list *stack_a)
-{
-	int	size;
-	int	length;
-
-	size = ft_lstsize(stack_a);
-	length = 0;
-	while (stack_a)
-	{
-		if (stack_a->data <= 0)
-			break ;
-		stack_a = stack_a->next;
-		length++;
-	}
-	if (length < size)
-		return (1);
-	return (0);
-}
-
 void	new_list_second_part(t_list *current, int min)
 {
 	while (current != NULL)
@@ -76,46 +57,39 @@ t_list	*new_list(t_list *stack_a)
 	return (stack_a);
 }
 
-void	algo_second_part(t_list **stack_a, t_list **stack_b, t_utils util)
+void	algo_second_part(t_list **stack_a, t_utils *util)
 {
-	util.tmp = *stack_a;
-	if (check_neg(util.tmp))
+	util->tmp = *stack_a;
+	if (check_neg(util->tmp))
 	{
-		if (!(*stack_a == new_list(util.tmp)))
+		if (!(*stack_a == new_list(util->tmp)))
 			exit(1);
 	}
 }
 
-void	algo(t_list **stack_a, t_list **stack_b)
+void	algo(t_list **stack_a, t_list **stack_b, t_utils *utils)
 {
-	t_utils	utils;
-
-	utils.j = 0;
-	utils.tmp = *stack_a;
-	utils.len = ft_lstsize(*stack_a);
-	algo_second_part(stack_a, stack_b, )
-//	if (check_neg(utils.tmp))
-//	{
-//		if (!(*stack_a == new_list(utils.tmp)))
-//			exit(1);
-//	}
-	utils.maxi = max(*stack_a);
-	while (utils.j <= bit_size(utils.maxi))
+	utils->j = 0;
+	utils->tmp = *stack_a;
+	utils->len = ft_lstsize(*stack_a);
+	utils->maxi = max(*stack_a);
+	algo_second_part(stack_a, utils);
+	while (utils->j <= bit_size(utils->maxi))
 	{
-		utils.i = 0;
-		while (utils.i < utils.len && is_sorted(*stack_a))
+		utils->i = 0;
+		while (utils->i < utils->len && is_sorted(*stack_a))
 		{
-			utils.tmp = *stack_a;
-			if (utils.tmp == NULL)
+			utils->tmp = *stack_a;
+			if (utils->tmp == NULL)
 				printf("stack a est vide\n");
-			if (((utils.tmp->data >> utils.j) & 1) == 0)
+			if (((utils->tmp->data >> utils->j) & 1) == 0)
 				pb(&*stack_a, &*stack_b);
 			else
 				ra(&*stack_a);
-			utils.i++;
+			utils->i++;
 		}
 		while (*stack_b != NULL)
 			pa(&*stack_a, &*stack_b);
-		utils.j++;
+		utils->j++;
 	}
 }

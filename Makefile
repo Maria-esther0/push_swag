@@ -70,7 +70,6 @@ LIB2	= src/LIBFT/libftprintf/libftprintf.a
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror -g3 #-fsanitize=address
 SRC		= 	src/push_swap.c\
-			src/quick_sort.c\
 			src/move_pa_pb.c\
 			src/move_ra_rb.c\
 			src/move_rra_rrb.c\
@@ -80,7 +79,9 @@ SRC		= 	src/push_swap.c\
 			src/arrange_small_stack.c\
 			src/arrange_big_stack.c\
 			src/algo.c\
-			src/main.c
+			src/main.c \
+			src/utils1.c \
+			src/utils2.c
 OBJ_DIR = obj
 OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 

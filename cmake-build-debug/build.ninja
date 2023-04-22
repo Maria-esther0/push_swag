@@ -119,13 +119,6 @@ build CMakeFiles/push_swag.dir/src/push_swap.c.o: C_COMPILER__push_swag_Debug /U
   OBJECT_DIR = CMakeFiles/push_swag.dir
   OBJECT_FILE_DIR = CMakeFiles/push_swag.dir/src
 
-build CMakeFiles/push_swag.dir/src/quick_sort.c.o: C_COMPILER__push_swag_Debug /Users/mvillarr/Documents/pr_push_swap/push_swag/src/quick_sort.c || cmake_object_order_depends_target_push_swag
-  DEP_FILE = CMakeFiles/push_swag.dir/src/quick_sort.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15
-  INCLUDES = -I/Users/mvillarr/Documents/pr_push_swap/push_swag/includes -I/Users/mvillarr/Documents/pr_push_swap/push_swag/src/LIBFT/ft_libft -I/Users/mvillarr/Documents/pr_push_swap/push_swag/src/LIBFT/get_next_line -I/Users/mvillarr/Documents/pr_push_swap/push_swag/src/LIBFT/libftprintf
-  OBJECT_DIR = CMakeFiles/push_swag.dir
-  OBJECT_FILE_DIR = CMakeFiles/push_swag.dir/src
-
 build CMakeFiles/push_swag.dir/src/stack_a_is_sorted.c.o: C_COMPILER__push_swag_Debug /Users/mvillarr/Documents/pr_push_swap/push_swag/src/stack_a_is_sorted.c || cmake_object_order_depends_target_push_swag
   DEP_FILE = CMakeFiles/push_swag.dir/src/stack_a_is_sorted.c.o.d
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15
@@ -141,7 +134,7 @@ build CMakeFiles/push_swag.dir/src/stack_a_is_sorted.c.o: C_COMPILER__push_swag_
 #############################################
 # Link the executable push_swag
 
-build push_swag: C_EXECUTABLE_LINKER__push_swag_Debug CMakeFiles/push_swag.dir/src/algo.c.o CMakeFiles/push_swag.dir/src/arrange_big_stack.c.o CMakeFiles/push_swag.dir/src/arrange_small_stack.c.o CMakeFiles/push_swag.dir/src/free.c.o CMakeFiles/push_swag.dir/src/main.c.o CMakeFiles/push_swag.dir/src/move_pa_pb.c.o CMakeFiles/push_swag.dir/src/move_ra_rb.c.o CMakeFiles/push_swag.dir/src/move_rra_rrb.c.o CMakeFiles/push_swag.dir/src/move_sa_sb.c.o CMakeFiles/push_swag.dir/src/push_swap.c.o CMakeFiles/push_swag.dir/src/quick_sort.c.o CMakeFiles/push_swag.dir/src/stack_a_is_sorted.c.o
+build push_swag: C_EXECUTABLE_LINKER__push_swag_Debug CMakeFiles/push_swag.dir/src/algo.c.o CMakeFiles/push_swag.dir/src/arrange_big_stack.c.o CMakeFiles/push_swag.dir/src/arrange_small_stack.c.o CMakeFiles/push_swag.dir/src/free.c.o CMakeFiles/push_swag.dir/src/main.c.o CMakeFiles/push_swag.dir/src/move_pa_pb.c.o CMakeFiles/push_swag.dir/src/move_ra_rb.c.o CMakeFiles/push_swag.dir/src/move_rra_rrb.c.o CMakeFiles/push_swag.dir/src/move_sa_sb.c.o CMakeFiles/push_swag.dir/src/push_swap.c.o CMakeFiles/push_swag.dir/src/stack_a_is_sorted.c.o
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15
   LINK_LIBRARIES = -Wl,-rpath,/Users/mvillarr/Documents/pr_push_swap/push_swag/src/LIBFT/ft_libft -Wl,-rpath,/Users/mvillarr/Documents/pr_push_swap/push_swag/src/LIBFT/libftprintf  -lft  -lftprintf
   LINK_PATH = -L/Users/mvillarr/Documents/pr_push_swap/push_swag/src/LIBFT/ft_libft   -L/Users/mvillarr/Documents/pr_push_swap/push_swag/src/LIBFT/libftprintf
