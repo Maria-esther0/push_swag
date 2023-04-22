@@ -33,30 +33,29 @@ void	display_lst(t_list **ptr_to_head, char *name)
 
 	current_node = *ptr_to_head;
 	count = 0;
-	printf("\n%s :\n", name);
+	ft_printf("\n%s :\n", name);
 	if (*ptr_to_head != NULL)
 	{
 		while (current_node->next != NULL)
 		{
-			printf("Index = %d : ", count);
+			ft_printf("Index = %d : ", count);
 			display_node(current_node);
 			current_node = current_node->next;
 			count++;
 		}
-		printf("Index = %d : ", count);
+		ft_printf("Index = %d : ", count);
 		display_node(current_node);
 	}
 	else
-		printf("The stack is empty.\n");
-	printf("\n");
-	printf("\n");
+		ft_printf("The stack is empty.\n");
+	ft_printf("\n");
 }
 
 void	display_node(t_list *lst)
 {
 	if (lst != NULL)
 	{
-		printf("[%p] {value = %d | indice = %d | nx = %p}\n", lst,
+		ft_printf("[%p] {value = %d | indice = %d | nx = %p}\n", lst,
 			lst->data,
 			lst->data,
 			lst->next);

@@ -57,7 +57,7 @@ int	check_similaire(int ac, char **argv, const char *tmp, t_utils *utils)
 			utils->count++;
 			if (utils->count >= 2)
 			{
-				printf("error\n");
+				ft_printf("error\n");
 				return (1);
 			}
 		}

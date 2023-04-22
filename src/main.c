@@ -68,7 +68,7 @@ void	tri_algo(t_list *a, t_list *b, t_utils *utils)
 		else
 			algo(&a, &b, utils);
 	}
-	display_lst(&a, "stack_a");
+//	display_lst(&a, "stack_a");
 	free_list_a(a);
 	free_list_b(b);
 }
@@ -81,6 +81,11 @@ int	main(int argc, char *argv[])
 
 	if (argc <= 1 || !ft_strlen(argv[1]) || check_first(argv[1]))
 		return (EXIT_FAILURE);
+	if (argc == 2)
+	{
+		ft_printf("error\n");
+		return (EXIT_FAILURE);
+	}
 	a = NULL;
 	b = NULL;
 	fill_stack(&a, argc, argv);
