@@ -21,12 +21,12 @@
 # include <ctype.h>
 # include <xlocale.h>
 
-typedef	struct	s_list
+typedef struct s_list
 {
 	int				data;
 	void			*content;
 	struct s_list	*next;
-	struct s_list 	*previous;
+	struct s_list	*previous;
 }				t_list;
 
 int		ft_atoi(const char *str);

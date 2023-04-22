@@ -18,7 +18,7 @@ int	insert(t_list **a, int number)
 	t_list	*new_node;
 	t_list	*tmp;
 
-	new_node = (t_list *)malloc(sizeof(t_list));
+	new_node = (t_list *) malloc(sizeof(t_list));
 	if (new_node == NULL)
 		return (-1);
 	tmp = *a;
@@ -37,29 +37,10 @@ int	insert(t_list **a, int number)
 	return (0);
 }
 
-//int	check_similaire2(t_utils utils, char **argv, const char *tmp)
-//{
-//
-//	if (!ft_strncmp(tmp, argv[utils.i], ft_strlen(argv[utils.i]))
-//		&& (ft_strlen(argv[utils.i]) == ft_strlen(tmp)))
-//	{
-//		utils.count++;
-//		if (utils.count >= 2)
-//		{
-//			printf("error\n");
-//			return (1);
-//		}
-//		utils.i++;
-//	}
-//	return (0);
-//}
-
-int	check_similaire(int ac, char **argv, const char *tmp)
+int	check_similaire(int ac, char **argv, const char *tmp, t_utils *utils)
 {
-	t_utils	utils;
-
-	utils.i = 0;
-	utils.count = 0;
+	utils->i = 0;
+	utils->count = 0;
 	if (ac == 2)
 	{
 		if (check_one_arg(argv, utils))
@@ -68,19 +49,19 @@ int	check_similaire(int ac, char **argv, const char *tmp)
 			return (1);
 		}
 	}
-	while (argv[utils.i])
+	while (argv[utils->i])
 	{
-		if (!ft_strncmp(tmp, argv[utils.i], ft_strlen(argv[utils.i]))
-			&& (ft_strlen(argv[utils.i]) == ft_strlen(tmp)))
+		if (!ft_strncmp(tmp, argv[utils->i], ft_strlen(argv[utils->i]))
+			&& (ft_strlen(argv[utils->i]) == ft_strlen(tmp)))
 		{
-			utils.count++;
-			if (utils.count >= 2)
+			utils->count++;
+			if (utils->count >= 2)
 			{
 				printf("error\n");
 				return (1);
 			}
 		}
-		utils.i++;
+		utils->i++;
 	}
 	return (0);
 }
@@ -117,6 +98,7 @@ int	fill_stack(t_list **a, int ac, char **argv)
 {
 	int		i;
 	char	*tmp;
+	t_utils	utils;
 
 	i = 1;
 	while (argv[i])
@@ -127,7 +109,7 @@ int	fill_stack(t_list **a, int ac, char **argv)
 			return (1);
 		}
 		tmp = argv[i];
-		if (check_similaire(ac, argv, tmp))
+		if (check_similaire(ac, argv, tmp, &utils))
 			exit(1);
 		i++;
 	}

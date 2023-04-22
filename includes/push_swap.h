@@ -84,8 +84,8 @@ void	print_list(t_list **head);
 void    display_lst(t_list **ptr_to_head, char *name);
 void    display_node(t_list *lst);
 int		ft_lstsize(t_list *lst);
-int 	check_similaire(int ac, char **argv, const char *tmp);
-int		check_one_arg(char **argv, t_utils	utils);
+int		check_similaire(int ac, char **argv, const char *tmp, t_utils *utils);
+int		check_one_arg(char **argv, t_utils	*utils);
 int		check_if(const char *arg);
 int		check_neg(t_list *stack_a);
 

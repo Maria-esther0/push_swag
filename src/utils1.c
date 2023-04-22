@@ -42,7 +42,7 @@ int	check_if(const char *arg)
 	while (arg[index] == '-' || (ft_isdigit(arg[index]) && index <= 10))
 	{
 		if (index == 9 && ((number > 214748364)
-						   || (number == 214748364 && arg[index] > '7')))
+				|| (number == 214748364 && arg[index] > '7')))
 			return (1);
 		number = arg[index] - '0' + number * 10;
 		index++;
@@ -52,30 +52,30 @@ int	check_if(const char *arg)
 	return (0);
 }
 
-int	check_one_arg(char **argv, t_utils	utils)
+int	check_one_arg(char **argv, t_utils	*utils)
 {
-	utils.n = 0;
-	utils.tp = ft_split(argv[1], ' ');
-	utils.tp2 = ft_split(argv[1], ' ');
-	while (utils.tp[utils.j])
+	utils->n = 0;
+	utils->tp = ft_split(argv[1], ' ');
+	utils->tp2 = ft_split(argv[1], ' ');
+	while (utils->tp[utils->j])
 	{
-		utils.x = 0;
-		utils.count = 0;
-		utils.temp = utils.tp[utils.n];
-		while (utils.tp2[utils.i])
+		utils->x = 0;
+		utils->count = 0;
+		utils->temp = utils->tp[utils->n];
+		while (utils->tp2[utils->i])
 		{
-			if (!ft_strncmp(utils.temp, utils.tp2[utils.x],
-							ft_strlen(utils.tp2[utils.x]))
-				&& (ft_strlen(utils.tp2[utils.x])
-					== ft_strlen(utils.temp)))
+			if (!ft_strncmp(utils->temp, utils->tp2[utils->x],
+					ft_strlen(utils->tp2[utils->x]))
+				&& (ft_strlen(utils->tp2[utils->x])
+					== ft_strlen(utils->temp)))
 			{
-				utils.count++;
-				if (utils.count >= 2)
+				utils->count++;
+				if (utils->count >= 2)
 					return (1);
 			}
-			utils.x++;
+			utils->x++;
 		}
-		utils.n++;
+		utils->n++;
 	}
 	return (0);
 }
