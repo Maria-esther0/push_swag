@@ -23,16 +23,36 @@ static int	bit_size(int size)
 	return (bit_max);
 }
 
-void	new_list_second_part(t_list *current, int min)
+t_list	*normalisation(t_list *stack_a, t_utils *utils)
 {
-	while (current != NULL)
+	utils->i = 0;
+	utils->tmp = stack_a;
+	utils->current = stack_a;
+	utils->check = utils->current;
+	while (utils->current != NULL)
 	{
-		if (current->data < min)
-			min = current->data;
-		current = current->next;
+		utils->min_value = INT_MAX;
+		utils->check = utils->tmp;
+		while (utils->check != NULL)
+		{
+			if (utils->check->data < utils->min_value
+				&& utils->check->data > utils->i)
+				utils->min_value = utils->check->data;
+			utils->check = utils->check->next;
+		}
+		utils->check = utils->tmp;
+		while (utils->check->data != utils->min_value)
+			utils->check = utils->check->next;
+		utils->check->data = utils->i;
+		utils->i++;
+		utils->current = utils->current->next;
 	}
+	utils->check = utils->tmp;
+	stack_a = utils->check;
+	return (stack_a);
 }
 
+//		printf("%d = %d - %d + 1\n", new_value, old_value, min_value);
 t_list	*new_list(t_list *stack_a)
 {
 	int		min_value;
@@ -40,23 +60,24 @@ t_list	*new_list(t_list *stack_a)
 	int		new_value;
 	t_list	*current;
 
-	min_value = INT_MAX;
 	current = stack_a;
-	new_list_second_part(current, min_value);
+	min_value = INT_MAX;
+	while (current != NULL)
+	{
+		if (current->data < min_value)
+			min_value = current->data;
+		current = current->next;
+	}
+	current = stack_a;
 	while (current != NULL)
 	{
 		if (current->data >= INT_MAX || current->data <= INT_MIN)
 			return (NULL);
 		old_value = current->data;
-		printf("old %d\n", old_value);
 		new_value = old_value - min_value + 1;
-		printf("new[%d] = old[%d] - min[%d] + 1\n", new_value, old_value, min_value);
 		current->data = new_value;
-		printf("current %d\n", current->data);
 		current = current->next;
 	}
-	current = stack_a;
-	stack_a = current;
 	return (stack_a);
 }
 
@@ -66,6 +87,14 @@ void	algo_second_part(t_list **stack_a, t_utils *util)
 	if (check_neg(util->tmp))
 	{
 		if (!(*stack_a == new_list(util->tmp)))
+			exit(1);
+		util->tmp = *stack_a;
+		if (*stack_a != normalisation(util->tmp, util))
+			exit(1);
+	}
+	else
+	{
+		if (*stack_a != normalisation(util->tmp, util))
 			exit(1);
 	}
 }
