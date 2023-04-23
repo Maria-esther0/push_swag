@@ -48,8 +48,11 @@ t_list	*new_list(t_list *stack_a)
 		if (current->data >= INT_MAX || current->data <= INT_MIN)
 			return (NULL);
 		old_value = current->data;
+		printf("old %d\n", old_value);
 		new_value = old_value - min_value + 1;
+		printf("new[%d] = old[%d] - min[%d] + 1\n", new_value, old_value, min_value);
 		current->data = new_value;
+		printf("current %d\n", current->data);
 		current = current->next;
 	}
 	current = stack_a;

@@ -80,8 +80,7 @@ SRC		= 	src/push_swap.c\
 			src/arrange_big_stack.c\
 			src/algo.c\
 			src/main.c \
-			src/utils1.c \
-			src/utils2.c
+			src/utils1.c
 OBJ_DIR = obj
 OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 

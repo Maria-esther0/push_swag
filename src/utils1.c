@@ -59,23 +59,22 @@ int	check_one_arg(char **argv, t_utils	*utils)
 	utils->tp2 = ft_split(argv[1], ' ');
 	while (utils->tp[utils->j])
 	{
-		utils->x = 0;
 		utils->count = 0;
-		utils->temp = utils->tp[utils->n];
+		utils->temp = utils->tp[utils->j];
 		while (utils->tp2[utils->i])
 		{
-			if (!ft_strncmp(utils->temp, utils->tp2[utils->x],
-					ft_strlen(utils->tp2[utils->x]))
-				&& (ft_strlen(utils->tp2[utils->x])
+			if (!ft_strncmp(utils->temp, utils->tp2[utils->i],
+					ft_strlen(utils->tp2[utils->i]))
+				&& (ft_strlen(utils->tp2[utils->i])
 					== ft_strlen(utils->temp)))
 			{
 				utils->count++;
 				if (utils->count >= 2)
 					return (1);
 			}
-			utils->x++;
+			utils->i++;
 		}
-		utils->n++;
+		utils->j++;
 	}
 	return (0);
 }
