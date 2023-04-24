@@ -31,7 +31,8 @@ int	check_neg(t_list *stack_a)
 	return (0);
 }
 
-// copyright <|°_°|>
+//arg[index] == '+' ||
+// copyright <|°_°|> <- C'est de la merde
 int	check_if(const char *arg)
 {
 	int	index;
@@ -39,7 +40,8 @@ int	check_if(const char *arg)
 
 	index = 0;
 	number = 0;
-	while (arg[index] == '-' || (ft_isdigit(arg[index]) && index <= 10))
+	while (arg[index] == '-' || ((ft_isdigit(arg[index]) && index <= 10)
+			|| arg[index] == '+'))
 	{
 		if (index == 9 && ((number > 214748364)
 				|| (number == 214748364 && arg[index] > '7')))
@@ -77,4 +79,13 @@ int	check_one_arg(char **argv, t_utils	*utils)
 		utils->j++;
 	}
 	return (0);
+}
+
+void	print_list(t_list **head)
+{
+	t_list	*tmp;
+
+	tmp = *head;
+	while (tmp)
+		tmp = tmp->next;
 }

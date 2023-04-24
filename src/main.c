@@ -27,6 +27,30 @@ int	get_stack_size(t_list *a)
 	return (i);
 }
 
+int	check_sign(char **av)
+{
+	int	i;
+	int	j;
+	int	count;
+
+	i = 1;
+	while (av[i])
+	{
+		j = 0;
+		count = 0;
+		while (av[i][j])
+		{
+			if (av[i][j] == '-' || av[i][j] == '+')
+				count++;
+			if (count > 1)
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
 int	check_first(const char *av1)
 {
 	int	i;
@@ -48,7 +72,6 @@ int	check_first(const char *av1)
 	return (0);
 }
 
-//	display_lst(&a, "stack_a");
 void	tri_algo(t_list *a, t_list *b, t_utils *utils)
 {
 	int		size;
@@ -69,6 +92,7 @@ void	tri_algo(t_list *a, t_list *b, t_utils *utils)
 		else
 			algo(&a, &b, utils);
 	}
+	display_lst(&a, "stack_a");
 	free_list_a(a);
 	free_list_b(b);
 }
@@ -81,23 +105,16 @@ int	main(int argc, char *argv[])
 
 	if (argc <= 1 || !ft_strlen(argv[1]) || check_first(argv[1]))
 		return (EXIT_FAILURE);
+	if (check_sign(argv))
+	{
+		ft_printf("Error\n");
+		return (EXIT_FAILURE);
+	}
 	a = NULL;
 	b = NULL;
 	fill_stack(&a, argc, argv);
 	if (!is_sorted(a))
-	{
-		ft_printf("error\n");
 		return (0);
-	}
 	tri_algo(a, b, &utils);
 	return (0);
-}
-
-void	print_list(t_list **head)
-{
-	t_list	*tmp;
-
-	tmp = *head;
-	while (tmp)
-		tmp = tmp->next;
 }

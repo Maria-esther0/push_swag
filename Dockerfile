@@ -1,7 +1,10 @@
 FROM ubuntu
 
-RUN apt update && apt -y install gcc make bash
+# C'est de la merde, I use arch btw
+WORKDIR push_swap
 
-COPY . push_swap
+RUN apt update && apt -y install gcc make bash vim
+
+COPY . .
 
 RUN ["/bin/bash"]

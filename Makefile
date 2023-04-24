@@ -80,7 +80,8 @@ SRC		= 	src/push_swap.c\
 			src/arrange_big_stack.c\
 			src/algo.c\
 			src/main.c \
-			src/utils1.c
+			src/utils1.c \
+			src/my_atoi.c
 OBJ_DIR = obj
 OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
@@ -119,3 +120,17 @@ fclean:
 		make -C src/LIBFT/ft_libft fclean
 		make -C src/LIBFT/libftprintf fclean
 re: fclean all
+
+docker:
+	docker build -t ubuntu .
+	docker run -it --name ubuntudk ubuntu
+
+docker_start:
+	docker start -i ubuntudk
+
+docker_run:
+	docker exec -it ubuntudk /bin/zsh
+
+prune:
+	docker system prune -a --volumes
+

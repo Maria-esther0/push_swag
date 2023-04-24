@@ -26,6 +26,10 @@ typedef struct s_utils
 	t_list	*tmp;
 	t_list	*current;
 	t_list	*check;
+	char	**args;
+	int		err;
+	int		res;
+	int		ret;
 	int		min_value;
 	int		i;
 	int		j;
@@ -81,7 +85,7 @@ t_list	*last_nbr(t_list *list);
 void	free_list_a(t_list *head);
 void	free_list_b(t_list	*head);
 void	free_strs(char **strs);
-int		set_node(t_list **a, char *arg);
+int		set_node(t_list **a, char *arg, t_utils utils);
 int		fill_stack(t_list **a, int ac, char **argv);
 void	print_list(t_list **head);
 void	display_lst(t_list **ptr_to_head, char *name);
@@ -91,5 +95,6 @@ int		check_similaire(int ac, char **argv, const char *tmp, t_utils *utils);
 int		check_one_arg(char **argv, t_utils	*utils);
 int		check_if(const char *arg);
 int		check_neg(t_list *stack_a);
+int		my_atoi(const char *str, int *ret);
 
 #endif

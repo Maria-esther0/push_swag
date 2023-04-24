@@ -113,7 +113,7 @@ void	algo(t_list **stack_a, t_list **stack_b, t_utils *utils)
 		{
 			utils->tmp = *stack_a;
 			if (utils->tmp == NULL)
-				ft_printf("error\n");
+				ft_printf("Error\n");
 			if (((utils->tmp->data >> utils->j) & 1) == 0)
 				pb(&*stack_a, &*stack_b);
 			else

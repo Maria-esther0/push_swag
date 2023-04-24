@@ -45,7 +45,7 @@ int	check_similaire(int ac, char **argv, const char *tmp, t_utils *utils)
 	{
 		if (check_one_arg(argv, utils))
 		{
-			ft_printf("error\n");
+			ft_printf("Error\n");
 			return (1);
 		}
 	}
@@ -57,7 +57,7 @@ int	check_similaire(int ac, char **argv, const char *tmp, t_utils *utils)
 			utils->count++;
 			if (utils->count >= 2)
 			{
-				ft_printf("error\n");
+				ft_printf("Error\n");
 				return (1);
 			}
 		}
@@ -66,32 +66,32 @@ int	check_similaire(int ac, char **argv, const char *tmp, t_utils *utils)
 	return (0);
 }
 
-int	set_node(t_list **a, char *arg)
+int	set_node(t_list **a, char *arg, t_utils utils)
 {
-	int		i;
-	char	**args;
-	int		num;
-	int		res;
-
-	i = -1;
-	args = ft_split(arg, ' ');
-	if (args == NULL)
+	utils.i = -1;
+	utils.args = ft_split(arg, ' ');
+	if (utils.args == NULL)
 		return (1);
-	res = 0;
-	while (args[++i])
+	utils.res = 0;
+	while (utils.args[++utils.i])
 	{
-		if (check_if(args[i]))
+		if (check_if(utils.args[utils.i]))
 		{
 			ft_printf("Error\n");
 			exit(1);
 		}
-		num = ft_atoi(args[i]);
-		res = insert(a, num);
-		if (res != 0)
+		utils.err = my_atoi(utils.args[utils.i], &utils.ret);
+		if (utils.err == 1 && utils.ret != 1)
+		{
+			ft_printf("Error");
+			exit(1);
+		}
+		utils.res = insert(a, utils.ret);
+		if (utils.res != 0)
 			break ;
 	}
-	free_strs(args);
-	return (res);
+	free_strs(utils.args);
+	return (utils.res);
 }
 
 int	fill_stack(t_list **a, int ac, char **argv)
@@ -103,9 +103,9 @@ int	fill_stack(t_list **a, int ac, char **argv)
 	i = 1;
 	while (argv[i])
 	{
-		if (set_node(a, argv[i]))
+		if (set_node(a, argv[i], utils))
 		{
-			ft_printf("error\n");
+			ft_printf("Error\n");
 			return (1);
 		}
 		tmp = argv[i];
